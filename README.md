@@ -95,7 +95,8 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 .
 ├── scripts/
 │   ├── requirements.txt
-│   └── build_geojson.py     # writes into web/data/
+│   ├── build_geojson.py     # writes into web/data/
+│   └── build_site.mjs       # stages web/ → dist/travel/ for deploy
 └── web/                     # the deployable bundle
     ├── index.html           # loads Mapbox GL JS from CDN
     ├── app.js               # clustered star layer, per-feature star color, popups, Streets tweaks
@@ -110,5 +111,24 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 
 ## Hosting
 
-Deferred. The `web/` directory is a self-contained static bundle (it includes
-`web/data/`), so it can be dropped onto any static host as-is.
+The site is published to **Cloudflare Pages** under a `/travel` subpath. A small staging
+step prepares a deployable `dist/`:
+
+```bash
+node --env-file=.env scripts/build_site.mjs
+```
+
+This copies `web/` → `dist/travel/` (so the map serves under `/travel/`), generates
+`dist/travel/config.js` from `MAPBOX_TOKEN`, and writes `dist/_redirects` pointing the
+site root at `/travel/`. Copy `.env.example` to `.env` and set `MAPBOX_TOKEN` (a
+production token, URL-restricted to the live domain) first.
+
+Deploy the staged folder with Wrangler (direct upload):
+
+```bash
+npx wrangler pages deploy dist --project-name <project> --branch main
+```
+
+Wrangler authenticates from `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in `.env`, or
+a prior `wrangler login`. `web/` stays a self-contained static bundle, so it can also be
+dropped onto any other static host as-is.
