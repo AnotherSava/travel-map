@@ -6,13 +6,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          139.7638947,
-          35.6768601
+          1.5032264,
+          42.4979185
         ]
       },
       "properties": {
-        "city": "Tokyo",
-        "country": "Japan",
+        "city": "Andorra la Vella",
+        "country": "Andorra",
         "region": null
       }
     },
@@ -21,14 +21,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          141.3542924,
-          43.061936
+          1.6496963,
+          42.5803334
         ]
       },
       "properties": {
-        "city": "Sapporo",
-        "country": "Japan",
-        "region": "Hokkaido"
+        "city": "El Tarter",
+        "country": "Andorra",
+        "region": null
       }
     },
     {
@@ -36,14 +36,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.330062,
-          47.6038321
+          1.733494,
+          42.5447098
         ]
       },
       "properties": {
-        "city": "Seattle",
-        "country": "United States",
-        "region": "Washington"
+        "city": "Pas de la Casa",
+        "country": "Andorra",
+        "region": null
       }
     },
     {
@@ -51,13 +51,898 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -74.0060152,
-          40.7127281
+          16.2343693,
+          48.0076713
         ]
       },
       "properties": {
-        "city": "New York",
-        "country": "United States",
+        "city": "Baden",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7406982,
+          47.2381536
+        ]
+      },
+      "properties": {
+        "city": "Imst",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.7573679,
+          47.2713898
+        ]
+      },
+      "properties": {
+        "city": "Kaprun",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0464806,
+          47.7981346
+        ]
+      },
+      "properties": {
+        "city": "Salzburg",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.3725042,
+          48.2083537
+        ]
+      },
+      "properties": {
+        "city": "Vienna",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.7963165,
+          47.3239636
+        ]
+      },
+      "properties": {
+        "city": "Zell am See",
+        "country": "Austria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.8328009,
+          40.3755885
+        ]
+      },
+      "properties": {
+        "city": "Baku",
+        "country": "Azerbaijan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.821245,
+          40.5064362
+        ]
+      },
+      "properties": {
+        "city": "Naftalan",
+        "country": "Azerbaijan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5618225,
+          53.9024716
+        ]
+      },
+      "properties": {
+        "city": "Minsk",
+        "country": "Belarus",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.352493,
+          50.8467372
+        ]
+      },
+      "properties": {
+        "city": "Brussels",
+        "country": "Belgium",
+        "region": "Brussels-Capital"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.226772,
+          51.2085526
+        ]
+      },
+      "properties": {
+        "city": "Bruges (Brugge)",
+        "country": "Belgium",
+        "region": "Flanders"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.7011675,
+          50.879202
+        ]
+      },
+      "properties": {
+        "city": "Leuven",
+        "country": "Belgium",
+        "region": "Flanders"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.919496,
+          51.2258565
+        ]
+      },
+      "properties": {
+        "city": "Ostend (Oostende)",
+        "country": "Belgium",
+        "region": "Flanders"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4841698,
+          41.8344086
+        ]
+      },
+      "properties": {
+        "city": "Bansko",
+        "country": "Bulgaria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.6074324,
+          42.2668301
+        ]
+      },
+      "properties": {
+        "city": "Borovets",
+        "country": "Bulgaria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5913304,
+          41.624097
+        ]
+      },
+      "properties": {
+        "city": "Smolyan",
+        "country": "Bulgaria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.3217359,
+          42.6977028
+        ]
+      },
+      "properties": {
+        "city": "Sofia",
+        "country": "Bulgaria",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.491241,
+          53.5462055
+        ]
+      },
+      "properties": {
+        "city": "Edmonton",
+        "country": "Canada",
+        "region": "Alberta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0612809,
+          49.3444666
+        ]
+      },
+      "properties": {
+        "city": "Baldy Mountain",
+        "country": "Canada",
+        "region": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.7746225,
+          49.063255
+        ]
+      },
+      "properties": {
+        "city": "Manning Park",
+        "country": "Canada",
+        "region": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.55,
+          49.183333
+        ]
+      },
+      "properties": {
+        "city": "Oliver",
+        "country": "Canada",
+        "region": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1956709,
+          50.998045
+        ]
+      },
+      "properties": {
+        "city": "Revelstoke",
+        "country": "Canada",
+        "region": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.113952,
+          49.2608724
+        ]
+      },
+      "properties": {
+        "city": "Vancouver",
+        "country": "Canada",
+        "region": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0639039,
+          43.1065603
+        ]
+      },
+      "properties": {
+        "city": "Niagara Falls",
+        "country": "Canada",
+        "region": "Ontario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6901106,
+          45.4208777
+        ]
+      },
+      "properties": {
+        "city": "Ottawa",
+        "country": "Canada",
+        "region": "Ontario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3839347,
+          43.6534817
+        ]
+      },
+      "properties": {
+        "city": "Toronto",
+        "country": "Canada",
+        "region": "Ontario"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.5698065,
+          45.5031824
+        ]
+      },
+      "properties": {
+        "city": "Montreal",
+        "country": "Canada",
+        "region": "Quebec"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2084061,
+          46.8137431
+        ]
+      },
+      "properties": {
+        "city": "Quebec City",
+        "country": "Canada",
+        "region": "Quebec"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0939501,
+          42.6491029
+        ]
+      },
+      "properties": {
+        "city": "Dubrovnik",
+        "country": "Croatia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.9772795,
+          45.8130967
+        ]
+      },
+      "properties": {
+        "city": "Zagreb",
+        "country": "Croatia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.9962036,
+          34.9893216
+        ]
+      },
+      "properties": {
+        "city": "Ayia Napa",
+        "country": "Cyprus",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4231586,
+          34.7743988
+        ]
+      },
+      "properties": {
+        "city": "Paphos",
+        "country": "Cyprus",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.1832917,
+          49.933809
+        ]
+      },
+      "properties": {
+        "city": "Karlštejn",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.6639046,
+          49.7815627
+        ]
+      },
+      "properties": {
+        "city": "Konopiště",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.8810539,
+          50.0407511
+        ]
+      },
+      "properties": {
+        "city": "Křivoklát",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2681123,
+          49.9486561
+        ]
+      },
+      "properties": {
+        "city": "Kutná Hora",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.4212535,
+          50.0874654
+        ]
+      },
+      "properties": {
+        "city": "Prague",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.6390582,
+          49.9224718
+        ]
+      },
+      "properties": {
+        "city": "Velké Popovice",
+        "country": "Czech Republic",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2357257,
+          30.0443879
+        ]
+      },
+      "properties": {
+        "city": "Cairo",
+        "country": "Egypt",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5145652,
+          28.4963633
+        ]
+      },
+      "properties": {
+        "city": "Dahab",
+        "country": "Egypt",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.8307062,
+          27.222556
+        ]
+      },
+      "properties": {
+        "city": "Hurghada",
+        "country": "Egypt",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.295447,
+          27.8644422
+        ]
+      },
+      "properties": {
+        "city": "Sharm El Sheikh",
+        "country": "Egypt",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7572693,
+          59.437242
+        ]
+      },
+      "properties": {
+        "city": "Tallinn",
+        "country": "Estonia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9435408,
+          60.1666204
+        ]
+      },
+      "properties": {
+        "city": "Helsinki",
+        "country": "Finland",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1883283,
+          65.9645637
+        ]
+      },
+      "properties": {
+        "city": "Kuusamo",
+        "country": "Finland",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.4474738,
+          43.5298424
+        ]
+      },
+      "properties": {
+        "city": "Aix-en-Provence",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.6309653,
+          43.6776223
+        ]
+      },
+      "properties": {
+        "city": "Arles",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8059012,
+          43.9492493
+        ]
+      },
+      "properties": {
+        "city": "Avignon",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6436313,
+          44.8984037
+        ]
+      },
+      "properties": {
+        "city": "Briançon",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.7357819,
+          45.1875602
+        ]
+      },
+      "properties": {
+        "city": "Grenoble",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0596448,
+          45.0820855
+        ]
+      },
+      "properties": {
+        "city": "Huez",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.1371755,
+          43.5360061
+        ]
+      },
+      "properties": {
+        "city": "Le Grau-du-Roi",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5098787,
+          44.9760855
+        ]
+      },
+      "properties": {
+        "city": "Le Monêtier-les-Bains",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1237609,
+          45.0099949
+        ]
+      },
+      "properties": {
+        "city": "Les Deux Alpes",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8320114,
+          45.7578137
+        ]
+      },
+      "properties": {
+        "city": "Lyon",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.3777888,
+          43.2963986
+        ]
+      },
+      "properties": {
+        "city": "Marseille",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7217996,
+          44.9311709
+        ]
+      },
+      "properties": {
+        "city": "Montgenèvre",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8767337,
+          43.6112422
+        ]
+      },
+      "properties": {
+        "city": "Montpellier",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.3600687,
+          43.8374249
+        ]
+      },
+      "properties": {
+        "city": "Nîmes",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8078783,
+          44.1371311
+        ]
+      },
+      "properties": {
+        "city": "Orange",
+        "country": "France",
         "region": null
       }
     },
@@ -81,13 +966,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          37.6063916,
-          55.625578
+          2.1266886,
+          48.8035403
         ]
       },
       "properties": {
-        "city": "Moscow",
-        "country": "Russia",
+        "city": "Versailles",
+        "country": "France",
         "region": null
       }
     },
@@ -96,14 +981,2309 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.226772,
-          51.2085526
+          44.4770286,
+          42.4765577
         ]
       },
       "properties": {
-        "city": "Bruges (Brugge)",
-        "country": "Belgium",
-        "region": "West Flanders"
+        "city": "Gudauri",
+        "country": "Georgia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.8014495,
+          41.6934591
+        ]
+      },
+      "properties": {
+        "city": "Tbilisi",
+        "country": "Georgia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3386522,
+          52.503379
+        ]
+      },
+      "properties": {
+        "city": "Berlin",
+        "country": "Germany",
+        "region": "Berlin"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0591397,
+          52.4009309
+        ]
+      },
+      "properties": {
+        "city": "Potsdam",
+        "country": "Germany",
+        "region": "Brandenburg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.759562,
+          51.434999
+        ]
+      },
+      "properties": {
+        "city": "Duisburg",
+        "country": "Germany",
+        "region": "North Rhine-Westphalia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7763137,
+          51.2254018
+        ]
+      },
+      "properties": {
+        "city": "Düsseldorf",
+        "country": "Germany",
+        "region": "North Rhine-Westphalia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0158171,
+          51.4582235
+        ]
+      },
+      "properties": {
+        "city": "Essen",
+        "country": "Germany",
+        "region": "North Rhine-Westphalia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7348324,
+          37.9755648
+        ]
+      },
+      "properties": {
+        "city": "Athens",
+        "country": "Greece",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0848266,
+          36.7936933
+        ]
+      },
+      "properties": {
+        "city": "Kos",
+        "country": "Greece",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1206631,
+          36.411602
+        ]
+      },
+      "properties": {
+        "city": "Kremasti",
+        "country": "Greece",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9194016,
+          36.1725297
+        ]
+      },
+      "properties": {
+        "city": "Rhodes",
+        "country": "Greece",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.1457723,
+          47.4813896
+        ]
+      },
+      "properties": {
+        "city": "Budapest",
+        "country": "Hungary",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0541598,
+          46.9071694
+        ]
+      },
+      "properties": {
+        "city": "Siófok",
+        "country": "Hungary",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0756378,
+          32.9281731
+        ]
+      },
+      "properties": {
+        "city": "Acre (Akko)",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.214581,
+          31.2612199
+        ]
+      },
+      "properties": {
+        "city": "Arad",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.565044,
+          31.6653191
+        ]
+      },
+      "properties": {
+        "city": "Ashkelon",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3638836,
+          31.2013827
+        ]
+      },
+      "properties": {
+        "city": "Ein Bokek",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3848241,
+          31.4523959
+        ]
+      },
+      "properties": {
+        "city": "Ein Gedi",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2257856,
+          31.7788472
+        ]
+      },
+      "properties": {
+        "city": "Jerusalem",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0703245,
+          32.8502229
+        ]
+      },
+      "properties": {
+        "city": "Kiryat Yam",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3538943,
+          31.3156403
+        ]
+      },
+      "properties": {
+        "city": "Masada",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0069297,
+          31.9085744
+        ]
+      },
+      "properties": {
+        "city": "Modiin",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7818064,
+          32.0852997
+        ]
+      },
+      "properties": {
+        "city": "Tel Aviv",
+        "country": "Israel",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.8740902,
+          46.4971763
+        ]
+      },
+      "properties": {
+        "city": "Arabba",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.6981304,
+          46.4878005
+        ]
+      },
+      "properties": {
+        "city": "Campitello di Fassa",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.7710748,
+          46.4768809
+        ]
+      },
+      "properties": {
+        "city": "Canazei",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.9338624,
+          44.40726
+        ]
+      },
+      "properties": {
+        "city": "Genoa",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1359928,
+          46.5381734
+        ]
+      },
+      "properties": {
+        "city": "Livigno",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1896346,
+          45.4641943
+        ]
+      },
+      "properties": {
+        "city": "Milan",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.6797912,
+          43.4714722
+        ]
+      },
+      "properties": {
+        "city": "Pisa",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.6867947,
+          46.4302623
+        ]
+      },
+      "properties": {
+        "city": "Pozza di Fassa",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.2004296,
+          43.976594
+        ]
+      },
+      "properties": {
+        "city": "Querceta",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4829321,
+          41.8933203
+        ]
+      },
+      "properties": {
+        "city": "Rome",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.6726135,
+          46.4204045
+        ]
+      },
+      "properties": {
+        "city": "Vigo di Fassa",
+        "country": "Italy",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          136.8998438,
+          35.1851045
+        ]
+      },
+      "properties": {
+        "city": "Nagoya",
+        "country": "Japan",
+        "region": "Aichi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.7472027,
+          40.8222833
+        ]
+      },
+      "properties": {
+        "city": "Aomori",
+        "country": "Japan",
+        "region": "Aomori"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.4640389,
+          40.6030543
+        ]
+      },
+      "properties": {
+        "city": "Hirosaki",
+        "country": "Japan",
+        "region": "Aomori"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.4753527,
+          34.3985139
+        ]
+      },
+      "properties": {
+        "city": "Hiroshima",
+        "country": "Japan",
+        "region": "Hiroshima"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.3088722,
+          34.271448
+        ]
+      },
+      "properties": {
+        "city": "Miyajima",
+        "country": "Japan",
+        "region": "Hiroshima"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.729008,
+          41.768793
+        ]
+      },
+      "properties": {
+        "city": "Hakodate",
+        "country": "Japan",
+        "region": "Hokkaido"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.3542924,
+          43.061936
+        ]
+      },
+      "properties": {
+        "city": "Sapporo",
+        "country": "Japan",
+        "region": "Hokkaido"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          136.6568822,
+          36.561627
+        ]
+      },
+      "properties": {
+        "city": "Kanazawa",
+        "country": "Japan",
+        "region": "Ishikawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.6343802,
+          35.4503381
+        ]
+      },
+      "properties": {
+        "city": "Yokohama",
+        "country": "Japan",
+        "region": "Kanagawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7584303,
+          34.9846076
+        ]
+      },
+      "properties": {
+        "city": "Kyoto",
+        "country": "Japan",
+        "region": "Kyoto"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.8691498,
+          38.2677554
+        ]
+      },
+      "properties": {
+        "city": "Sendai",
+        "country": "Japan",
+        "region": "Miyagi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.1947664,
+          36.6485851
+        ]
+      },
+      "properties": {
+        "city": "Nagano",
+        "country": "Japan",
+        "region": "Nagano"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.4305856,
+          36.7343852
+        ]
+      },
+      "properties": {
+        "city": "Shibu Onsen",
+        "country": "Japan",
+        "region": "Nagano"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.8189414,
+          34.6808117
+        ]
+      },
+      "properties": {
+        "city": "Nara",
+        "country": "Japan",
+        "region": "Nara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.5014539,
+          34.6937569
+        ]
+      },
+      "properties": {
+        "city": "Osaka",
+        "country": "Japan",
+        "region": "Osaka"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.766706,
+          35.6812546
+        ]
+      },
+      "properties": {
+        "city": "Tokyo",
+        "country": "Japan",
+        "region": "Tokyo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.3400205,
+          38.2553393
+        ]
+      },
+      "properties": {
+        "city": "Yamagata",
+        "country": "Japan",
+        "region": "Yamagata"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.7653041,
+          35.5010653
+        ]
+      },
+      "properties": {
+        "city": "Fujikawaguchiko",
+        "country": "Japan",
+        "region": "Yamanashi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9239625,
+          31.9515694
+        ]
+      },
+      "properties": {
+        "city": "Amman",
+        "country": "Jordan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.8896803,
+          32.278448
+        ]
+      },
+      "properties": {
+        "city": "Jerash",
+        "country": "Jordan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4745669,
+          30.3258363
+        ]
+      },
+      "properties": {
+        "city": "Petra",
+        "country": "Jordan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.5367516,
+          42.4517622
+        ]
+      },
+      "properties": {
+        "city": "Herceg Novi",
+        "country": "Montenegro",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.2777313,
+          6.8135851
+        ]
+      },
+      "properties": {
+        "city": "Balabag",
+        "country": "Philippines",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.9781963,
+          51.1263106
+        ]
+      },
+      "properties": {
+        "city": "Wrocław",
+        "country": "Poland",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.1815174,
+          44.2930144
+        ]
+      },
+      "properties": {
+        "city": "Kamennomostsky",
+        "country": "Russia",
+        "region": "Adygea"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.2148673,
+          52.5394905
+        ]
+      },
+      "properties": {
+        "city": "Biysk",
+        "country": "Russia",
+        "region": "Altai Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9880987,
+          51.4585813
+        ]
+      },
+      "properties": {
+        "city": "Elekmonar",
+        "country": "Russia",
+        "region": "Altai Republic"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.4539041,
+          43.3467938
+        ]
+      },
+      "properties": {
+        "city": "Elbrus",
+        "country": "Russia",
+        "region": "Kabardino-Balkaria"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.5132369,
+          43.2560838
+        ]
+      },
+      "properties": {
+        "city": "Terskol",
+        "country": "Russia",
+        "region": "Kabardino-Balkaria"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.9237036,
+          43.4253834
+        ]
+      },
+      "properties": {
+        "city": "Adler",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.316887,
+          44.894272
+        ]
+      },
+      "properties": {
+        "city": "Anapa",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.533611,
+          44.3703184
+        ]
+      },
+      "properties": {
+        "city": "Arkhipo-Osipovka",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.2603962,
+          43.6856443
+        ]
+      },
+      "properties": {
+        "city": "Esto-Sadok",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0766832,
+          44.5609447
+        ]
+      },
+      "properties": {
+        "city": "Gelendzhik",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.2069574,
+          43.6779574
+        ]
+      },
+      "properties": {
+        "city": "Krasnaya Polyana",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.9772396,
+          45.0351532
+        ]
+      },
+      "properties": {
+        "city": "Krasnodar",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.3317538,
+          43.9102991
+        ]
+      },
+      "properties": {
+        "city": "Lazarevskoye",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7690711,
+          44.7239578
+        ]
+      },
+      "properties": {
+        "city": "Novorossiysk",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.723109,
+          43.5854823
+        ]
+      },
+      "properties": {
+        "city": "Sochi",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.2747987,
+          46.7112094
+        ]
+      },
+      "properties": {
+        "city": "Yeysk",
+        "country": "Russia",
+        "region": "Krasnodar Krai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6174782,
+          55.7505412
+        ]
+      },
+      "properties": {
+        "city": "Moscow",
+        "country": "Russia",
+        "region": "Moscow (federal city)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9583358,
+          56.0360129
+        ]
+      },
+      "properties": {
+        "city": "Volokolamsk",
+        "country": "Russia",
+        "region": "Moscow Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4838441,
+          56.289936
+        ]
+      },
+      "properties": {
+        "city": "Yakhroma",
+        "country": "Russia",
+        "region": "Moscow Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.6637527,
+          67.6151331
+        ]
+      },
+      "properties": {
+        "city": "Kirovsk",
+        "country": "Russia",
+        "region": "Murmansk Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.07497,
+          68.970665
+        ]
+      },
+      "properties": {
+        "city": "Murmansk",
+        "country": "Russia",
+        "region": "Murmansk Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.1458289,
+          69.1641329
+        ]
+      },
+      "properties": {
+        "city": "Teriberka",
+        "country": "Russia",
+        "region": "Murmansk Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.0051395,
+          56.3264816
+        ]
+      },
+      "properties": {
+        "city": "Nizhny Novgorod",
+        "country": "Russia",
+        "region": "Nizhny Novgorod Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.2537994,
+          57.9791414
+        ]
+      },
+      "properties": {
+        "city": "Valday",
+        "country": "Russia",
+        "region": "Novgorod Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7561681,
+          46.878724
+        ]
+      },
+      "properties": {
+        "city": "Port-Katon",
+        "country": "Russia",
+        "region": "Rostov Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.6884462,
+          54.6702523
+        ]
+      },
+      "properties": {
+        "city": "Ryazan",
+        "country": "Russia",
+        "region": "Ryazan Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.912041,
+          59.881847
+        ]
+      },
+      "properties": {
+        "city": "Peterhof",
+        "country": "Russia",
+        "region": "Saint Petersburg (federal city)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.316229,
+          59.938732
+        ]
+      },
+      "properties": {
+        "city": "Saint Petersburg",
+        "country": "Russia",
+        "region": "Saint Petersburg (federal city)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.1115022,
+          55.7946485
+        ]
+      },
+      "properties": {
+        "city": "Kazan",
+        "country": "Russia",
+        "region": "Tatarstan"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.61754,
+          54.1930321
+        ]
+      },
+      "properties": {
+        "city": "Tula",
+        "country": "Russia",
+        "region": "Tula Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.1013213,
+          57.1557583
+        ]
+      },
+      "properties": {
+        "city": "Ostashkov",
+        "country": "Russia",
+        "region": "Tver Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9208284,
+          56.858675
+        ]
+      },
+      "properties": {
+        "city": "Tver",
+        "country": "Russia",
+        "region": "Tver Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.4075203,
+          56.1288899
+        ]
+      },
+      "properties": {
+        "city": "Vladimir",
+        "country": "Russia",
+        "region": "Vladimir Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9123351,
+          59.1242181
+        ]
+      },
+      "properties": {
+        "city": "Cherepovets",
+        "country": "Russia",
+        "region": "Vologda Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8462714,
+          56.7367178
+        ]
+      },
+      "properties": {
+        "city": "Pereslavl-Zalessky",
+        "country": "Russia",
+        "region": "Yaroslavl Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.119701,
+          58.503201
+        ]
+      },
+      "properties": {
+        "city": "Poshekhonye",
+        "country": "Russia",
+        "region": "Yaroslavl Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.8933705,
+          57.6263877
+        ]
+      },
+      "properties": {
+        "city": "Yaroslavl",
+        "country": "Russia",
+        "region": "Yaroslavl Oblast"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.1093063,
+          48.1516988
+        ]
+      },
+      "properties": {
+        "city": "Bratislava",
+        "country": "Slovakia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0472059,
+          38.6028245
+        ]
+      },
+      "properties": {
+        "city": "Altea",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.177073,
+          41.3825802
+        ]
+      },
+      "properties": {
+        "city": "Barcelona",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.4197463,
+          38.9743901
+        ]
+      },
+      "properties": {
+        "city": "Ibiza",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.416951,
+          38.731698
+        ]
+      },
+      "properties": {
+        "city": "La Savina",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.703507,
+          40.416782
+        ]
+      },
+      "properties": {
+        "city": "Madrid",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.6500745,
+          39.5695818
+        ]
+      },
+      "properties": {
+        "city": "Palma",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.6828446,
+          37.9775416
+        ]
+      },
+      "properties": {
+        "city": "Torrevieja",
+        "country": "Spain",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4106096,
+          8.334985
+        ]
+      },
+      "properties": {
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8542005,
+          6.9388614
+        ]
+      },
+      "properties": {
+        "city": "Colombo",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6510917,
+          7.8742031
+        ]
+      },
+      "properties": {
+        "city": "Dambulla",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1028181,
+          6.140753
+        ]
+      },
+      "properties": {
+        "city": "Hikkaduwa",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6350358,
+          7.2931208
+        ]
+      },
+      "properties": {
+        "city": "Kandy",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7571612,
+          7.012402
+        ]
+      },
+      "properties": {
+        "city": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8293371,
+          7.9818403
+        ]
+      },
+      "properties": {
+        "city": "Puttalam",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7599301,
+          7.9566634
+        ]
+      },
+      "properties": {
+        "city": "Sigiriya",
+        "country": "Sri Lanka",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8585139,
+          46.6855231
+        ]
+      },
+      "properties": {
+        "city": "Interlaken",
+        "country": "Switzerland",
+        "region": "Bern"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.8392428,
+          46.4978958
+        ]
+      },
+      "properties": {
+        "city": "St. Moritz",
+        "country": "Switzerland",
+        "region": "Graubünden"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4874187,
+          47.3518692
+        ]
+      },
+      "properties": {
+        "city": "Uetliberg Station",
+        "country": "Switzerland",
+        "region": "Zürich"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5410422,
+          47.3744489
+        ]
+      },
+      "properties": {
+        "city": "Zürich",
+        "country": "Switzerland",
+        "region": "Zürich"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.4935089,
+          13.7524938
+        ]
+      },
+      "properties": {
+        "city": "Bangkok",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.406888,
+          20.2607827
+        ]
+      },
+      "properties": {
+        "city": "Chiang Khong",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.9858802,
+          18.7882778
+        ]
+      },
+      "properties": {
+        "city": "Chiang Mai",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.6734592,
+          19.7589517
+        ]
+      },
+      "properties": {
+        "city": "Chiang Rai",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.3507809,
+          12.1066431
+        ]
+      },
+      "properties": {
+        "city": "Ko Chang",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.9956193,
+          9.5013945
+        ]
+      },
+      "properties": {
+        "city": "Ko Samui",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.8829694,
+          20.4397711
+        ]
+      },
+      "properties": {
+        "city": "Mae Sai",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.8865002,
+          12.9366924
+        ]
+      },
+      "properties": {
+        "city": "Pattaya",
+        "country": "Thailand",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.8280511,
+          35.7707582
+        ]
+      },
+      "properties": {
+        "city": "Monastir",
+        "country": "Tunisia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0675039,
+          40.1825734
+        ]
+      },
+      "properties": {
+        "city": "Bursa",
+        "country": "Turkey",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1190366,
+          40.8563545
+        ]
+      },
+      "properties": {
+        "city": "Büyükada",
+        "country": "Turkey",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9758715,
+          41.006381
+        ]
+      },
+      "properties": {
+        "city": "Istanbul",
+        "country": "Turkey",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2742661,
+          36.8522547
+        ]
+      },
+      "properties": {
+        "city": "Marmaris",
+        "country": "Turkey",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4095393,
+          44.677112
+        ]
+      },
+      "properties": {
+        "city": "Alushta",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6453246,
+          48.2050985
+        ]
+      },
+      "properties": {
+        "city": "Berehove (Берегове)",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.7417235,
+          51.272593
+        ]
+      },
+      "properties": {
+        "city": "Chernihiv",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3753628,
+          45.033669
+        ]
+      },
+      "properties": {
+        "city": "Feodosia",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.7872282,
+          44.3915373
+        ]
+      },
+      "properties": {
+        "city": "Foros",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2422149,
+          44.9593622
+        ]
+      },
+      "properties": {
+        "city": "Koktebel",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.1882694,
+          44.9143409
+        ]
+      },
+      "properties": {
+        "city": "Kurortne",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5241361,
+          50.4500336
+        ]
+      },
+      "properties": {
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7344444,
+          47.4242451
+        ]
+      },
+      "properties": {
+        "city": "Myrne",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9385185,
+          49.0212883
+        ]
+      },
+      "properties": {
+        "city": "Popovka",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.5220842,
+          44.6054434
+        ]
+      },
+      "properties": {
+        "city": "Sevastopol",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.1024858,
+          44.9521459
+        ]
+      },
+      "properties": {
+        "city": "Simferopol",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.971099,
+          44.8488369
+        ]
+      },
+      "properties": {
+        "city": "Sudak",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.1689358,
+          44.4987874
+        ]
+      },
+      "properties": {
+        "city": "Yalta",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.3679049,
+          45.1907635
+        ]
+      },
+      "properties": {
+        "city": "Yevpatoria",
+        "country": "Ukraine",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1277653,
+          51.5074456
+        ]
+      },
+      "properties": {
+        "city": "London",
+        "country": "United Kingdom",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.984862,
+          39.7392364
+        ]
+      },
+      "properties": {
+        "city": "Denver",
+        "country": "United States",
+        "region": "Colorado"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1583502,
+          39.7683331
+        ]
+      },
+      "properties": {
+        "city": "Indianapolis",
+        "country": "United States",
+        "region": "Indiana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0578303,
+          42.3588336
+        ]
+      },
+      "properties": {
+        "city": "Boston",
+        "country": "United States",
+        "region": "Massachusetts"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0060152,
+          40.7127281
+        ]
+      },
+      "properties": {
+        "city": "New York",
+        "country": "United States",
+        "region": "New York"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.674194,
+          45.5202471
+        ]
+      },
+      "properties": {
+        "city": "Portland",
+        "country": "United States",
+        "region": "Oregon"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1635262,
+          39.9527237
+        ]
+      },
+      "properties": {
+        "city": "Philadelphia",
+        "country": "United States",
+        "region": "Pennsylvania"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4128343,
+          41.8239891
+        ]
+      },
+      "properties": {
+        "city": "Providence",
+        "country": "United States",
+        "region": "Rhode Island"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.192337,
+          47.6144219
+        ]
+      },
+      "properties": {
+        "city": "Bellevue",
+        "country": "United States",
+        "region": "Washington"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.330062,
+          47.6038321
+        ]
+      },
+      "properties": {
+        "city": "Seattle",
+        "country": "United States",
+        "region": "Washington"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4528349,
+          41.9034912
+        ]
+      },
+      "properties": {
+        "city": "Vatican",
+        "country": "Vatican City",
+        "region": null
       }
     }
   ]

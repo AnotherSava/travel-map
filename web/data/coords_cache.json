@@ -1,19 +1,699 @@
 {
-  "Bruges, West Flanders, Belgium": [
+  "Acre, Israel": [
+    35.0756378,
+    32.9281731
+  ],
+  "Adler, Krasnodar Krai, Russia": [
+    39.9237036,
+    43.4253834
+  ],
+  "Aix-en-Provence, France": [
+    5.4474738,
+    43.5298424
+  ],
+  "Altea, Spain": [
+    -0.0472059,
+    38.6028245
+  ],
+  "Alushta, Ukraine": [
+    34.4095393,
+    44.677112
+  ],
+  "Amman, Jordan": [
+    35.9239625,
+    31.9515694
+  ],
+  "Anapa, Krasnodar Krai, Russia": [
+    37.316887,
+    44.894272
+  ],
+  "Andorra la Vella, Andorra": [
+    1.5032264,
+    42.4979185
+  ],
+  "Anuradhapura, Sri Lanka": [
+    80.4106096,
+    8.334985
+  ],
+  "Aomori, Aomori, Japan": [
+    140.7472027,
+    40.8222833
+  ],
+  "Arabba, Italy": [
+    11.8740902,
+    46.4971763
+  ],
+  "Arad, Israel": [
+    35.214581,
+    31.2612199
+  ],
+  "Arkhipo-Osipovka, Krasnodar Krai, Russia": [
+    38.533611,
+    44.3703184
+  ],
+  "Arles, France": [
+    4.6309653,
+    43.6776223
+  ],
+  "Ashkelon, Israel": [
+    34.565044,
+    31.6653191
+  ],
+  "Athens, Greece": [
+    23.7348324,
+    37.9755648
+  ],
+  "Avignon, France": [
+    4.8059012,
+    43.9492493
+  ],
+  "Ayia Napa, Cyprus": [
+    33.9962036,
+    34.9893216
+  ],
+  "Baden, Austria": [
+    16.2343693,
+    48.0076713
+  ],
+  "Baku, Azerbaijan": [
+    49.8328009,
+    40.3755885
+  ],
+  "Balabag, Philippines": [
+    125.2777313,
+    6.8135851
+  ],
+  "Baldy Mountain, British Columbia, Canada": [
+    -117.0612809,
+    49.3444666
+  ],
+  "Bangkok, Thailand": [
+    100.4935089,
+    13.7524938
+  ],
+  "Bansko, Bulgaria": [
+    23.4841698,
+    41.8344086
+  ],
+  "Barcelona, Spain": [
+    2.177073,
+    41.3825802
+  ],
+  "Bellevue, Washington, United States": [
+    -122.192337,
+    47.6144219
+  ],
+  "Berehove, Ukraine": [
+    22.6453246,
+    48.2050985
+  ],
+  "Berlin, Berlin, Germany": [
+    13.3386522,
+    52.503379
+  ],
+  "Biysk, Altai Krai, Russia": [
+    85.2148673,
+    52.5394905
+  ],
+  "Borovets, Bulgaria": [
+    23.6074324,
+    42.2668301
+  ],
+  "Boston, Massachusetts, United States": [
+    -71.0578303,
+    42.3588336
+  ],
+  "Bratislava, Slovakia": [
+    17.1093063,
+    48.1516988
+  ],
+  "Briançon, France": [
+    6.6436313,
+    44.8984037
+  ],
+  "Bruges, Flanders, Belgium": [
     3.226772,
     51.2085526
   ],
-  "Moscow, Russia": [
-    37.6063916,
-    55.625578
+  "Brussels, Brussels-Capital, Belgium": [
+    4.352493,
+    50.8467372
   ],
-  "New York, United States": [
+  "Budapest, Hungary": [
+    19.1457723,
+    47.4813896
+  ],
+  "Bursa, Turkey": [
+    29.0675039,
+    40.1825734
+  ],
+  "Büyükada, Turkey": [
+    29.1190366,
+    40.8563545
+  ],
+  "Cairo, Egypt": [
+    31.2357257,
+    30.0443879
+  ],
+  "Campitello di Fassa, Italy": [
+    11.6981304,
+    46.4878005
+  ],
+  "Canazei, Italy": [
+    11.7710748,
+    46.4768809
+  ],
+  "Cherepovets, Vologda Oblast, Russia": [
+    37.9123351,
+    59.1242181
+  ],
+  "Chernihiv, Ukraine": [
+    31.7417235,
+    51.272593
+  ],
+  "Chiang Khong, Thailand": [
+    100.406888,
+    20.2607827
+  ],
+  "Chiang Mai, Thailand": [
+    98.9858802,
+    18.7882778
+  ],
+  "Chiang Rai, Thailand": [
+    99.6734592,
+    19.7589517
+  ],
+  "Colombo, Sri Lanka": [
+    79.8542005,
+    6.9388614
+  ],
+  "Dahab, Egypt": [
+    34.5145652,
+    28.4963633
+  ],
+  "Dambulla, Sri Lanka": [
+    80.6510917,
+    7.8742031
+  ],
+  "Denver, Colorado, United States": [
+    -104.984862,
+    39.7392364
+  ],
+  "Dubrovnik, Croatia": [
+    18.0939501,
+    42.6491029
+  ],
+  "Duisburg, North Rhine-Westphalia, Germany": [
+    6.759562,
+    51.434999
+  ],
+  "Düsseldorf, North Rhine-Westphalia, Germany": [
+    6.7763137,
+    51.2254018
+  ],
+  "Edmonton, Alberta, Canada": [
+    -113.491241,
+    53.5462055
+  ],
+  "Ein Bokek, Israel": [
+    35.3638836,
+    31.2013827
+  ],
+  "Ein Gedi, Israel": [
+    35.3848241,
+    31.4523959
+  ],
+  "El Tarter, Andorra": [
+    1.6496963,
+    42.5803334
+  ],
+  "Elbrus, Kabardino-Balkaria, Russia": [
+    42.4539041,
+    43.3467938
+  ],
+  "Elekmonar, Altai Republic, Russia": [
+    85.9880987,
+    51.4585813
+  ],
+  "Essen, North Rhine-Westphalia, Germany": [
+    7.0158171,
+    51.4582235
+  ],
+  "Esto-Sadok, Krasnodar Krai, Russia": [
+    40.2603962,
+    43.6856443
+  ],
+  "Feodosia, Ukraine": [
+    35.3753628,
+    45.033669
+  ],
+  "Foros, Ukraine": [
+    33.7872282,
+    44.3915373
+  ],
+  "Fujikawaguchiko, Yamanashi, Japan": [
+    138.7653041,
+    35.5010653
+  ],
+  "Gelendzhik, Krasnodar Krai, Russia": [
+    38.0766832,
+    44.5609447
+  ],
+  "Genoa, Italy": [
+    8.9338624,
+    44.40726
+  ],
+  "Grenoble, France": [
+    5.7357819,
+    45.1875602
+  ],
+  "Gudauri, Georgia": [
+    44.4770286,
+    42.4765577
+  ],
+  "Hakodate, Hokkaido, Japan": [
+    140.729008,
+    41.768793
+  ],
+  "Helsinki, Finland": [
+    24.9435408,
+    60.1666204
+  ],
+  "Herceg Novi, Montenegro": [
+    18.5367516,
+    42.4517622
+  ],
+  "Hikkaduwa, Sri Lanka": [
+    80.1028181,
+    6.140753
+  ],
+  "Hirosaki, Aomori, Japan": [
+    140.4640389,
+    40.6030543
+  ],
+  "Hiroshima, Hiroshima, Japan": [
+    132.4753527,
+    34.3985139
+  ],
+  "Huez, France": [
+    6.0596448,
+    45.0820855
+  ],
+  "Hurghada, Egypt": [
+    33.8307062,
+    27.222556
+  ],
+  "Ibiza, Spain": [
+    1.4197463,
+    38.9743901
+  ],
+  "Imst, Austria": [
+    10.7406982,
+    47.2381536
+  ],
+  "Indianapolis, Indiana, United States": [
+    -86.1583502,
+    39.7683331
+  ],
+  "Interlaken, Bern, Switzerland": [
+    7.8585139,
+    46.6855231
+  ],
+  "Istanbul, Turkey": [
+    28.9758715,
+    41.006381
+  ],
+  "Jerash, Jordan": [
+    35.8896803,
+    32.278448
+  ],
+  "Jerusalem, Israel": [
+    35.2257856,
+    31.7788472
+  ],
+  "Kamennomostsky, Adygea, Russia": [
+    40.1815174,
+    44.2930144
+  ],
+  "Kanazawa, Ishikawa, Japan": [
+    136.6568822,
+    36.561627
+  ],
+  "Kandy, Sri Lanka": [
+    80.6350358,
+    7.2931208
+  ],
+  "Kaprun, Austria": [
+    12.7573679,
+    47.2713898
+  ],
+  "Karlštejn, Czech Republic": [
+    14.1832917,
+    49.933809
+  ],
+  "Kazan, Tatarstan, Russia": [
+    49.1115022,
+    55.7946485
+  ],
+  "Kirovsk, Murmansk Oblast, Russia": [
+    33.6637527,
+    67.6151331
+  ],
+  "Kiryat Yam, Israel": [
+    35.0703245,
+    32.8502229
+  ],
+  "Ko Chang, Thailand": [
+    102.3507809,
+    12.1066431
+  ],
+  "Ko Samui, Thailand": [
+    99.9956193,
+    9.5013945
+  ],
+  "Koktebel, Ukraine": [
+    35.2422149,
+    44.9593622
+  ],
+  "Konopiště, Czech Republic": [
+    14.6639046,
+    49.7815627
+  ],
+  "Kos, Greece": [
+    27.0848266,
+    36.7936933
+  ],
+  "Krasnaya Polyana, Krasnodar Krai, Russia": [
+    40.2069574,
+    43.6779574
+  ],
+  "Krasnodar, Krasnodar Krai, Russia": [
+    38.9772396,
+    45.0351532
+  ],
+  "Kremasti, Greece": [
+    28.1206631,
+    36.411602
+  ],
+  "Kurortne, Ukraine": [
+    35.1882694,
+    44.9143409
+  ],
+  "Kutná Hora, Czech Republic": [
+    15.2681123,
+    49.9486561
+  ],
+  "Kuusamo, Finland": [
+    29.1883283,
+    65.9645637
+  ],
+  "Kyiv, Ukraine": [
+    30.5241361,
+    50.4500336
+  ],
+  "Kyoto, Kyoto, Japan": [
+    135.7584303,
+    34.9846076
+  ],
+  "Křivoklát, Czech Republic": [
+    13.8810539,
+    50.0407511
+  ],
+  "La Savina, Spain": [
+    1.416951,
+    38.731698
+  ],
+  "Lazarevskoye, Krasnodar Krai, Russia": [
+    39.3317538,
+    43.9102991
+  ],
+  "Le Grau-du-Roi, France": [
+    4.1371755,
+    43.5360061
+  ],
+  "Le Monêtier-les-Bains, France": [
+    6.5098787,
+    44.9760855
+  ],
+  "Les Deux Alpes, France": [
+    6.1237609,
+    45.0099949
+  ],
+  "Leuven, Flanders, Belgium": [
+    4.7011675,
+    50.879202
+  ],
+  "Livigno, Italy": [
+    10.1359928,
+    46.5381734
+  ],
+  "London, United Kingdom": [
+    -0.1277653,
+    51.5074456
+  ],
+  "Lyon, France": [
+    4.8320114,
+    45.7578137
+  ],
+  "Madrid, Spain": [
+    -3.703507,
+    40.416782
+  ],
+  "Mae Sai, Thailand": [
+    99.8829694,
+    20.4397711
+  ],
+  "Manning Park, British Columbia, Canada": [
+    -120.7746225,
+    49.063255
+  ],
+  "Marmaris, Turkey": [
+    28.2742661,
+    36.8522547
+  ],
+  "Marseille, France": [
+    5.3777888,
+    43.2963986
+  ],
+  "Masada, Israel": [
+    35.3538943,
+    31.3156403
+  ],
+  "Milan, Italy": [
+    9.1896346,
+    45.4641943
+  ],
+  "Minsk, Belarus": [
+    27.5618225,
+    53.9024716
+  ],
+  "Miyajima, Hiroshima, Japan": [
+    132.3088722,
+    34.271448
+  ],
+  "Modiin, Israel": [
+    35.0069297,
+    31.9085744
+  ],
+  "Monastir, Tunisia": [
+    10.8280511,
+    35.7707582
+  ],
+  "Montgenèvre, France": [
+    6.7217996,
+    44.9311709
+  ],
+  "Montpellier, France": [
+    3.8767337,
+    43.6112422
+  ],
+  "Montreal, Quebec, Canada": [
+    -73.5698065,
+    45.5031824
+  ],
+  "Moscow, Moscow, Russia": [
+    37.6174782,
+    55.7505412
+  ],
+  "Murmansk, Murmansk Oblast, Russia": [
+    33.07497,
+    68.970665
+  ],
+  "Myrne, Ukraine": [
+    37.7344444,
+    47.4242451
+  ],
+  "Naftalan, Azerbaijan": [
+    46.821245,
+    40.5064362
+  ],
+  "Nagano, Nagano, Japan": [
+    138.1947664,
+    36.6485851
+  ],
+  "Nagoya, Aichi, Japan": [
+    136.8998438,
+    35.1851045
+  ],
+  "Nara, Nara, Japan": [
+    135.8189414,
+    34.6808117
+  ],
+  "New York, New York, United States": [
     -74.0060152,
     40.7127281
+  ],
+  "Niagara Falls, Ontario, Canada": [
+    -79.0639039,
+    43.1065603
+  ],
+  "Nizhny Novgorod, Nizhny Novgorod Oblast, Russia": [
+    44.0051395,
+    56.3264816
+  ],
+  "Novorossiysk, Krasnodar Krai, Russia": [
+    37.7690711,
+    44.7239578
+  ],
+  "Nuwara Eliya, Sri Lanka": [
+    80.7571612,
+    7.012402
+  ],
+  "Nîmes, France": [
+    4.3600687,
+    43.8374249
+  ],
+  "Oliver, British Columbia, Canada": [
+    -119.55,
+    49.183333
+  ],
+  "Orange, France": [
+    4.8078783,
+    44.1371311
+  ],
+  "Osaka, Osaka, Japan": [
+    135.5014539,
+    34.6937569
+  ],
+  "Ostashkov, Tver Oblast, Russia": [
+    33.1013213,
+    57.1557583
+  ],
+  "Ostend, Flanders, Belgium": [
+    2.919496,
+    51.2258565
+  ],
+  "Ottawa, Ontario, Canada": [
+    -75.6901106,
+    45.4208777
+  ],
+  "Palma, Spain": [
+    2.6500745,
+    39.5695818
+  ],
+  "Paphos, Cyprus": [
+    32.4231586,
+    34.7743988
   ],
   "Paris, France": [
     2.320041,
     48.8588897
+  ],
+  "Pas de la Casa, Andorra": [
+    1.733494,
+    42.5447098
+  ],
+  "Pattaya, Thailand": [
+    100.8865002,
+    12.9366924
+  ],
+  "Pereslavl-Zalessky, Yaroslavl Oblast, Russia": [
+    38.8462714,
+    56.7367178
+  ],
+  "Peterhof, Saint Petersburg, Russia": [
+    29.912041,
+    59.881847
+  ],
+  "Petra, Jordan": [
+    35.4745669,
+    30.3258363
+  ],
+  "Philadelphia, Pennsylvania, United States": [
+    -75.1635262,
+    39.9527237
+  ],
+  "Pisa, Italy": [
+    10.6797912,
+    43.4714722
+  ],
+  "Popovka, Ukraine": [
+    37.9385185,
+    49.0212883
+  ],
+  "Port-Katon, Rostov Oblast, Russia": [
+    38.7561681,
+    46.878724
+  ],
+  "Portland, Oregon, United States": [
+    -122.674194,
+    45.5202471
+  ],
+  "Poshekhonye, Yaroslavl Oblast, Russia": [
+    39.119701,
+    58.503201
+  ],
+  "Potsdam, Brandenburg, Germany": [
+    13.0591397,
+    52.4009309
+  ],
+  "Pozza di Fassa, Italy": [
+    11.6867947,
+    46.4302623
+  ],
+  "Prague, Czech Republic": [
+    14.4212535,
+    50.0874654
+  ],
+  "Providence, Rhode Island, United States": [
+    -71.4128343,
+    41.8239891
+  ],
+  "Puttalam, Sri Lanka": [
+    79.8293371,
+    7.9818403
+  ],
+  "Quebec City, Quebec, Canada": [
+    -71.2084061,
+    46.8137431
+  ],
+  "Querceta, Italy": [
+    10.2004296,
+    43.976594
+  ],
+  "Revelstoke, British Columbia, Canada": [
+    -118.1956709,
+    50.998045
+  ],
+  "Rhodes, Greece": [
+    27.9194016,
+    36.1725297
+  ],
+  "Rome, Italy": [
+    12.4829321,
+    41.8933203
+  ],
+  "Ryazan, Ryazan Oblast, Russia": [
+    39.6884462,
+    54.6702523
+  ],
+  "Saint Petersburg, Saint Petersburg, Russia": [
+    30.316229,
+    59.938732
+  ],
+  "Salzburg, Austria": [
+    13.0464806,
+    47.7981346
   ],
   "Sapporo, Hokkaido, Japan": [
     141.3542924,
@@ -23,8 +703,176 @@
     -122.330062,
     47.6038321
   ],
-  "Tokyo, Japan": [
-    139.7638947,
-    35.6768601
+  "Sendai, Miyagi, Japan": [
+    140.8691498,
+    38.2677554
+  ],
+  "Sevastopol, Ukraine": [
+    33.5220842,
+    44.6054434
+  ],
+  "Sharm El Sheikh, Egypt": [
+    34.295447,
+    27.8644422
+  ],
+  "Shibu Onsen, Nagano, Japan": [
+    138.4305856,
+    36.7343852
+  ],
+  "Sigiriya, Sri Lanka": [
+    80.7599301,
+    7.9566634
+  ],
+  "Simferopol, Ukraine": [
+    34.1024858,
+    44.9521459
+  ],
+  "Siófok, Hungary": [
+    18.0541598,
+    46.9071694
+  ],
+  "Smolyan, Bulgaria": [
+    24.5913304,
+    41.624097
+  ],
+  "Sochi, Krasnodar Krai, Russia": [
+    39.723109,
+    43.5854823
+  ],
+  "Sofia, Bulgaria": [
+    23.3217359,
+    42.6977028
+  ],
+  "St. Moritz, Graubünden, Switzerland": [
+    9.8392428,
+    46.4978958
+  ],
+  "Sudak, Ukraine": [
+    34.971099,
+    44.8488369
+  ],
+  "Tallinn, Estonia": [
+    24.7572693,
+    59.437242
+  ],
+  "Tbilisi, Georgia": [
+    44.8014495,
+    41.6934591
+  ],
+  "Tel Aviv, Israel": [
+    34.7818064,
+    32.0852997
+  ],
+  "Teriberka, Murmansk Oblast, Russia": [
+    35.1458289,
+    69.1641329
+  ],
+  "Terskol, Kabardino-Balkaria, Russia": [
+    42.5132369,
+    43.2560838
+  ],
+  "Tokyo, Tokyo, Japan": [
+    139.766706,
+    35.6812546
+  ],
+  "Toronto, Ontario, Canada": [
+    -79.3839347,
+    43.6534817
+  ],
+  "Torrevieja, Spain": [
+    -0.6828446,
+    37.9775416
+  ],
+  "Tula, Tula Oblast, Russia": [
+    37.61754,
+    54.1930321
+  ],
+  "Tver, Tver Oblast, Russia": [
+    35.9208284,
+    56.858675
+  ],
+  "Uetliberg Station, Zürich, Switzerland": [
+    8.4874187,
+    47.3518692
+  ],
+  "Valday, Novgorod Oblast, Russia": [
+    33.2537994,
+    57.9791414
+  ],
+  "Vancouver, British Columbia, Canada": [
+    -123.113952,
+    49.2608724
+  ],
+  "Vatican, Vatican City": [
+    12.4528349,
+    41.9034912
+  ],
+  "Velké Popovice, Czech Republic": [
+    14.6390582,
+    49.9224718
+  ],
+  "Versailles, France": [
+    2.1266886,
+    48.8035403
+  ],
+  "Vienna, Austria": [
+    16.3725042,
+    48.2083537
+  ],
+  "Vigo di Fassa, Italy": [
+    11.6726135,
+    46.4204045
+  ],
+  "Vladimir, Vladimir Oblast, Russia": [
+    40.4075203,
+    56.1288899
+  ],
+  "Volokolamsk, Moscow Oblast, Russia": [
+    35.9583358,
+    56.0360129
+  ],
+  "Wrocław, Poland": [
+    16.9781963,
+    51.1263106
+  ],
+  "Yakhroma, Moscow Oblast, Russia": [
+    37.4838441,
+    56.289936
+  ],
+  "Yalta, Ukraine": [
+    34.1689358,
+    44.4987874
+  ],
+  "Yamagata, Yamagata, Japan": [
+    140.3400205,
+    38.2553393
+  ],
+  "Yaroslavl, Yaroslavl Oblast, Russia": [
+    39.8933705,
+    57.6263877
+  ],
+  "Yevpatoria, Ukraine": [
+    33.3679049,
+    45.1907635
+  ],
+  "Yeysk, Krasnodar Krai, Russia": [
+    38.2747987,
+    46.7112094
+  ],
+  "Yokohama, Kanagawa, Japan": [
+    139.6343802,
+    35.4503381
+  ],
+  "Zagreb, Croatia": [
+    15.9772795,
+    45.8130967
+  ],
+  "Zell am See, Austria": [
+    12.7963165,
+    47.3239636
+  ],
+  "Zürich, Zürich, Switzerland": [
+    8.5410422,
+    47.3744489
   ]
 }

@@ -1,34 +1,406 @@
 [
   {
-    "country": "Japan",
+    "country": "Andorra",
     "cities": [
-      { "name": "Tokyo" },
-      { "name": "Sapporo", "region": "Hokkaido" }
+      { "name": "Andorra la Vella" },
+      { "name": "El Tarter" },
+      { "name": "Pas de la Casa" }
     ]
   },
   {
-    "country": "United States",
+    "country": "Austria",
     "cities": [
-      { "name": "Seattle", "region": "Washington" },
-      { "name": "New York" }
+      { "name": "Baden" },
+      { "name": "Imst" },
+      { "name": "Kaprun" },
+      { "name": "Salzburg" },
+      { "name": "Vienna" },
+      { "name": "Zell am See" }
     ]
   },
   {
-    "country": "France",
+    "country": "Azerbaijan",
     "cities": [
-      { "name": "Paris" }
+      { "name": "Baku" },
+      { "name": "Naftalan" }
     ]
   },
   {
-    "country": "Russia",
+    "country": "Belarus",
     "cities": [
-      { "name": "Moscow" }
+      { "name": "Minsk" }
     ]
   },
   {
     "country": "Belgium",
     "cities": [
-      { "name": "Bruges (Brugge)", "region": "West Flanders" }
+      { "name": "Brussels", "region": "Brussels-Capital" },
+      { "name": "Bruges (Brugge)", "region": "Flanders" },
+      { "name": "Leuven", "region": "Flanders" },
+      { "name": "Ostend (Oostende)", "region": "Flanders" }
+    ]
+  },
+  {
+    "country": "Bulgaria",
+    "cities": [
+      { "name": "Bansko" },
+      { "name": "Borovets" },
+      { "name": "Smolyan" },
+      { "name": "Sofia" }
+    ]
+  },
+  {
+    "country": "Canada",
+    "cities": [
+      { "name": "Edmonton", "region": "Alberta" },
+      { "name": "Baldy Mountain", "region": "British Columbia" },
+      { "name": "Manning Park", "region": "British Columbia" },
+      { "name": "Oliver", "region": "British Columbia" },
+      { "name": "Revelstoke", "region": "British Columbia" },
+      { "name": "Vancouver", "region": "British Columbia" },
+      { "name": "Niagara Falls", "region": "Ontario" },
+      { "name": "Ottawa", "region": "Ontario" },
+      { "name": "Toronto", "region": "Ontario" },
+      { "name": "Montreal", "region": "Quebec" },
+      { "name": "Quebec City", "region": "Quebec" }
+    ]
+  },
+  {
+    "country": "Croatia",
+    "cities": [
+      { "name": "Dubrovnik" },
+      { "name": "Zagreb" }
+    ]
+  },
+  {
+    "country": "Cyprus",
+    "cities": [
+      { "name": "Ayia Napa" },
+      { "name": "Paphos" }
+    ]
+  },
+  {
+    "country": "Czech Republic",
+    "cities": [
+      { "name": "Karlštejn" },
+      { "name": "Konopiště" },
+      { "name": "Křivoklát" },
+      { "name": "Kutná Hora" },
+      { "name": "Prague" },
+      { "name": "Velké Popovice" }
+    ]
+  },
+  {
+    "country": "Egypt",
+    "cities": [
+      { "name": "Cairo" },
+      { "name": "Dahab" },
+      { "name": "Hurghada" },
+      { "name": "Sharm El Sheikh" }
+    ]
+  },
+  {
+    "country": "Estonia",
+    "cities": [
+      { "name": "Tallinn" }
+    ]
+  },
+  {
+    "country": "Finland",
+    "cities": [
+      { "name": "Helsinki" },
+      { "name": "Kuusamo" }
+    ]
+  },
+  {
+    "country": "France",
+    "cities": [
+      { "name": "Aix-en-Provence" },
+      { "name": "Arles" },
+      { "name": "Avignon" },
+      { "name": "Briançon" },
+      { "name": "Grenoble" },
+      { "name": "Huez" },
+      { "name": "Le Grau-du-Roi" },
+      { "name": "Le Monêtier-les-Bains" },
+      { "name": "Les Deux Alpes" },
+      { "name": "Lyon" },
+      { "name": "Marseille" },
+      { "name": "Montgenèvre" },
+      { "name": "Montpellier" },
+      { "name": "Nîmes" },
+      { "name": "Orange" },
+      { "name": "Paris" },
+      { "name": "Versailles" }
+    ]
+  },
+  {
+    "country": "Georgia",
+    "cities": [
+      { "name": "Gudauri" },
+      { "name": "Tbilisi" }
+    ]
+  },
+  {
+    "country": "Germany",
+    "cities": [
+      { "name": "Berlin", "region": "Berlin" },
+      { "name": "Potsdam", "region": "Brandenburg" },
+      { "name": "Duisburg", "region": "North Rhine-Westphalia" },
+      { "name": "Düsseldorf", "region": "North Rhine-Westphalia" },
+      { "name": "Essen", "region": "North Rhine-Westphalia" }
+    ]
+  },
+  {
+    "country": "Greece",
+    "cities": [
+      { "name": "Athens" },
+      { "name": "Kos" },
+      { "name": "Kremasti" },
+      { "name": "Rhodes" }
+    ]
+  },
+  {
+    "country": "Hungary",
+    "cities": [
+      { "name": "Budapest" },
+      { "name": "Siófok" }
+    ]
+  },
+  {
+    "country": "Israel",
+    "cities": [
+      { "name": "Acre (Akko)" },
+      { "name": "Arad" },
+      { "name": "Ashkelon" },
+      { "name": "Ein Bokek" },
+      { "name": "Ein Gedi" },
+      { "name": "Jerusalem" },
+      { "name": "Kiryat Yam" },
+      { "name": "Masada" },
+      { "name": "Modiin" },
+      { "name": "Tel Aviv" }
+    ]
+  },
+  {
+    "country": "Italy",
+    "cities": [
+      { "name": "Arabba" },
+      { "name": "Campitello di Fassa" },
+      { "name": "Canazei" },
+      { "name": "Genoa" },
+      { "name": "Livigno" },
+      { "name": "Milan" },
+      { "name": "Pisa" },
+      { "name": "Pozza di Fassa" },
+      { "name": "Querceta" },
+      { "name": "Rome" },
+      { "name": "Vigo di Fassa" }
+    ]
+  },
+  {
+    "country": "Japan",
+    "cities": [
+      { "name": "Nagoya", "region": "Aichi" },
+      { "name": "Aomori", "region": "Aomori" },
+      { "name": "Hirosaki", "region": "Aomori" },
+      { "name": "Hiroshima", "region": "Hiroshima" },
+      { "name": "Miyajima", "region": "Hiroshima" },
+      { "name": "Hakodate", "region": "Hokkaido" },
+      { "name": "Sapporo", "region": "Hokkaido" },
+      { "name": "Kanazawa", "region": "Ishikawa" },
+      { "name": "Yokohama", "region": "Kanagawa" },
+      { "name": "Kyoto", "region": "Kyoto" },
+      { "name": "Sendai", "region": "Miyagi" },
+      { "name": "Nagano", "region": "Nagano" },
+      { "name": "Shibu Onsen", "region": "Nagano" },
+      { "name": "Nara", "region": "Nara" },
+      { "name": "Osaka", "region": "Osaka" },
+      { "name": "Tokyo", "region": "Tokyo" },
+      { "name": "Yamagata", "region": "Yamagata" },
+      { "name": "Fujikawaguchiko", "region": "Yamanashi" }
+    ]
+  },
+  {
+    "country": "Jordan",
+    "cities": [
+      { "name": "Amman" },
+      { "name": "Jerash" },
+      { "name": "Petra" }
+    ]
+  },
+  {
+    "country": "Montenegro",
+    "cities": [
+      { "name": "Herceg Novi" }
+    ]
+  },
+  {
+    "country": "Philippines",
+    "cities": [
+      { "name": "Balabag" }
+    ]
+  },
+  {
+    "country": "Poland",
+    "cities": [
+      { "name": "Wrocław" }
+    ]
+  },
+  {
+    "country": "Russia",
+    "cities": [
+      { "name": "Kamennomostsky", "region": "Adygea" },
+      { "name": "Biysk", "region": "Altai Krai" },
+      { "name": "Elekmonar", "region": "Altai Republic" },
+      { "name": "Elbrus", "region": "Kabardino-Balkaria" },
+      { "name": "Terskol", "region": "Kabardino-Balkaria" },
+      { "name": "Adler", "region": "Krasnodar Krai" },
+      { "name": "Anapa", "region": "Krasnodar Krai" },
+      { "name": "Arkhipo-Osipovka", "region": "Krasnodar Krai" },
+      { "name": "Esto-Sadok", "region": "Krasnodar Krai" },
+      { "name": "Gelendzhik", "region": "Krasnodar Krai" },
+      { "name": "Krasnaya Polyana", "region": "Krasnodar Krai" },
+      { "name": "Krasnodar", "region": "Krasnodar Krai" },
+      { "name": "Lazarevskoye", "region": "Krasnodar Krai" },
+      { "name": "Novorossiysk", "region": "Krasnodar Krai" },
+      { "name": "Sochi", "region": "Krasnodar Krai" },
+      { "name": "Yeysk", "region": "Krasnodar Krai" },
+      { "name": "Moscow", "region": "Moscow (federal city)" },
+      { "name": "Volokolamsk", "region": "Moscow Oblast" },
+      { "name": "Yakhroma", "region": "Moscow Oblast" },
+      { "name": "Kirovsk", "region": "Murmansk Oblast" },
+      { "name": "Murmansk", "region": "Murmansk Oblast" },
+      { "name": "Teriberka", "region": "Murmansk Oblast" },
+      { "name": "Nizhny Novgorod", "region": "Nizhny Novgorod Oblast" },
+      { "name": "Valday", "region": "Novgorod Oblast" },
+      { "name": "Port-Katon", "region": "Rostov Oblast" },
+      { "name": "Ryazan", "region": "Ryazan Oblast" },
+      { "name": "Peterhof", "region": "Saint Petersburg (federal city)" },
+      { "name": "Saint Petersburg", "region": "Saint Petersburg (federal city)" },
+      { "name": "Kazan", "region": "Tatarstan" },
+      { "name": "Tula", "region": "Tula Oblast" },
+      { "name": "Ostashkov", "region": "Tver Oblast" },
+      { "name": "Tver", "region": "Tver Oblast" },
+      { "name": "Vladimir", "region": "Vladimir Oblast" },
+      { "name": "Cherepovets", "region": "Vologda Oblast" },
+      { "name": "Pereslavl-Zalessky", "region": "Yaroslavl Oblast" },
+      { "name": "Poshekhonye", "region": "Yaroslavl Oblast" },
+      { "name": "Yaroslavl", "region": "Yaroslavl Oblast" }
+    ]
+  },
+  {
+    "country": "Slovakia",
+    "cities": [
+      { "name": "Bratislava" }
+    ]
+  },
+  {
+    "country": "Spain",
+    "cities": [
+      { "name": "Altea" },
+      { "name": "Barcelona" },
+      { "name": "Ibiza" },
+      { "name": "La Savina" },
+      { "name": "Madrid" },
+      { "name": "Palma" },
+      { "name": "Torrevieja" }
+    ]
+  },
+  {
+    "country": "Sri Lanka",
+    "cities": [
+      { "name": "Anuradhapura" },
+      { "name": "Colombo" },
+      { "name": "Dambulla" },
+      { "name": "Hikkaduwa" },
+      { "name": "Kandy" },
+      { "name": "Nuwara Eliya" },
+      { "name": "Puttalam" },
+      { "name": "Sigiriya" }
+    ]
+  },
+  {
+    "country": "Switzerland",
+    "cities": [
+      { "name": "Interlaken", "region": "Bern" },
+      { "name": "St. Moritz", "region": "Graubünden" },
+      { "name": "Uetliberg Station", "region": "Zürich" },
+      { "name": "Zürich", "region": "Zürich" }
+    ]
+  },
+  {
+    "country": "Thailand",
+    "cities": [
+      { "name": "Bangkok" },
+      { "name": "Chiang Khong" },
+      { "name": "Chiang Mai" },
+      { "name": "Chiang Rai" },
+      { "name": "Ko Chang" },
+      { "name": "Ko Samui" },
+      { "name": "Mae Sai" },
+      { "name": "Pattaya" }
+    ]
+  },
+  {
+    "country": "Tunisia",
+    "cities": [
+      { "name": "Monastir" }
+    ]
+  },
+  {
+    "country": "Turkey",
+    "cities": [
+      { "name": "Bursa" },
+      { "name": "Büyükada" },
+      { "name": "Istanbul" },
+      { "name": "Marmaris" }
+    ]
+  },
+  {
+    "country": "Ukraine",
+    "cities": [
+      { "name": "Alushta" },
+      { "name": "Berehove (Берегове)" },
+      { "name": "Chernihiv" },
+      { "name": "Feodosia" },
+      { "name": "Foros" },
+      { "name": "Koktebel" },
+      { "name": "Kurortne" },
+      { "name": "Kyiv" },
+      { "name": "Myrne" },
+      { "name": "Popovka" },
+      { "name": "Sevastopol" },
+      { "name": "Simferopol" },
+      { "name": "Sudak" },
+      { "name": "Yalta" },
+      { "name": "Yevpatoria" }
+    ]
+  },
+  {
+    "country": "United Kingdom",
+    "cities": [
+      { "name": "London" }
+    ]
+  },
+  {
+    "country": "United States",
+    "cities": [
+      { "name": "Denver", "region": "Colorado" },
+      { "name": "Indianapolis", "region": "Indiana" },
+      { "name": "Boston", "region": "Massachusetts" },
+      { "name": "New York", "region": "New York" },
+      { "name": "Portland", "region": "Oregon" },
+      { "name": "Philadelphia", "region": "Pennsylvania" },
+      { "name": "Providence", "region": "Rhode Island" },
+      { "name": "Bellevue", "region": "Washington" },
+      { "name": "Seattle", "region": "Washington" }
+    ]
+  },
+  {
+    "country": "Vatican City",
+    "cities": [
+      { "name": "Vatican" }
     ]
   }
 ]
