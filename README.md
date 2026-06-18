@@ -82,10 +82,11 @@ token. Get one (Tokens), then:
 cp web/config.example.js web/config.js   # then paste your token into config.js
 ```
 
-A dropdown (top-right) switches the base map live between Mapbox's Streets, Satellite
-hybrid, Light, and Dark styles. Without a token the app shows a prompt instead of a map.
+The map renders a single, customized Mapbox **Streets** globe — roads hidden and
+country/region borders sharpened. Without a token the app shows a prompt instead of a map.
 
-`web/config.js` is gitignored. You can also pin one style via `window.MAP_STYLE`.
+`web/config.js` is gitignored. You can override the style with any Mapbox style URL via
+`window.MAP_STYLE` (which also skips the Streets-specific customizations).
 
 ## Project layout
 
@@ -96,7 +97,7 @@ hybrid, Light, and Dark styles. Without a token the app shows a prompt instead o
 │   └── build_geojson.py     # writes into web/data/
 └── web/                     # the deployable bundle
     ├── index.html           # loads Mapbox GL JS from CDN
-    ├── app.js               # clustered star layer, color-by-country, popups, style switcher
+    ├── app.js               # clustered star layer, color-by-country, popups, Streets tweaks
     ├── style.css
     ├── config.example.js    # template for the Mapbox token
     └── data/

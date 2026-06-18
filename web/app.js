@@ -4,17 +4,13 @@
 // one, init() shows a prompt instead of a map.
 mapboxgl.accessToken = window.MAPBOX_TOKEN || "";
 
-// Base maps shown in the in-page switcher (top-right). The token is global, so
-// the style URLs carry no key.
-const MAPBOX_STYLES = [
-  { label: "Streets", url: "mapbox://styles/mapbox/streets-v12" },
-  { label: "Satellite hybrid", url: "mapbox://styles/mapbox/satellite-streets-v12" },
-  { label: "Light", url: "mapbox://styles/mapbox/light-v11" },
-  { label: "Dark", url: "mapbox://styles/mapbox/dark-v11" },
-];
+// Single base map: Mapbox Streets, customized below (roads removed, borders
+// sharpened). Override with any Mapbox style via window.MAP_STYLE in config.js.
+const STYLE_URL = window.MAP_STYLE || (window.MAPBOX_TOKEN ? "mapbox://styles/mapbox/streets-v12" : undefined);
 
-const STYLES = window.MAPBOX_TOKEN ? MAPBOX_STYLES : [];
-const STYLE_URL = window.MAP_STYLE || (STYLES[0] && STYLES[0].url);
+// Road family in Mapbox styles: surface/bridge/tunnel road lines, links, arrows,
+// rails, ferries, and their labels/shields.
+const ROAD_LAYER_RE = /road|bridge|tunnel|motorway|street|ferry/i;
 
 // data/ lives inside web/, so the whole bundle serves from web/.
 const DATA_URL = new URL("data/places.geojson", window.location.href).href;
@@ -23,8 +19,10 @@ const DATA_URL = new URL("data/places.geojson", window.location.href).href;
 // configured. Includes a public glyphs source so cluster-count labels work even
 // without a base map; a real Mapbox style supplies its own glyphs.
 const BLANK_STYLE = { version: 8, glyphs: "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf", sources: {}, layers: [] };
-const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: [0, 20], zoom: 1.4 });
+const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: [0, 20], zoom: 1.4, attributionControl: false });
 map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
+// Attribution is required (Mapbox + OSM); compact collapses it to an ⓘ button.
+map.addControl(new mapboxgl.AttributionControl({ compact: true }));
 
 // Golden-angle hues give visually distinct, evenly spread colors for any count.
 function buildPalette(countries) {
@@ -74,8 +72,31 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-// Add the star/cluster overlay. Safe to call repeatedly: switching the base map
-// wipes custom sources/layers/images, so this re-runs on every style load.
+// Hide every road-family layer in the loaded style for a clean, roadless map.
+function hideRoadLayers() {
+  for (const layer of map.getStyle().layers) {
+    if (ROAD_LAYER_RE.test(layer.id)) map.setLayoutProperty(layer.id, "visibility", "none");
+  }
+}
+
+// Per-style tweaks for the Streets base map: drop all roads, and sharpen the
+// border hierarchy — country borders (admin-0) darker, region borders (admin-1)
+// lighter — so countries stand out and lower tiers recede.
+function tweakStreets() {
+  hideRoadLayers();
+  const borderColors = {
+    "admin-0-boundary": "hsl(240, 50%, 42%)",
+    "admin-0-boundary-disputed": "hsl(240, 50%, 42%)",
+    "admin-1-boundary": "hsl(240, 35%, 75%)",
+  };
+  for (const [id, color] of Object.entries(borderColors)) {
+    if (map.getLayer(id)) map.setPaintProperty(id, "line-color", color);
+  }
+}
+
+// Add the star/cluster overlay. Safe to call repeatedly: `styledata` fires
+// multiple times while the style loads, and the per-item guards below make the
+// re-runs idempotent.
 function installOverlay(geojson, colorMatch) {
   // Idempotent per item: `styledata` fires repeatedly (sprite/tiles/style swap),
   // sometimes mid-transition, so guard every add individually.
@@ -134,23 +155,6 @@ function fitToData(geojson) {
   if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: 60, maxZoom: 6, duration: 0 });
 }
 
-// Top-right dropdown to switch base maps live. setStyle keeps the current camera
-// and fires `styledata`, which re-installs the overlay.
-function buildStyleSwitcher() {
-  const select = document.createElement("select");
-  select.className = "style-switcher";
-  STYLES.forEach((style) => {
-    const option = document.createElement("option");
-    option.value = style.url;
-    option.textContent = style.label;
-    option.selected = style.url === STYLE_URL;
-    select.appendChild(option);
-  });
-  // diff:false forces a clean swap so custom layers don't linger half-removed.
-  select.addEventListener("change", () => map.setStyle(select.value, { diff: false }));
-  document.body.appendChild(select);
-}
-
 async function init() {
   let geojson;
   try {
@@ -166,11 +170,12 @@ async function init() {
   const palette = buildPalette(countries);
   const colorMatch = ["match", ["get", "country"], ...countries.flatMap((c) => [c, palette[c]]), "#888"];
 
-  // Switching the base style wipes custom sources/layers/images; re-install them
-  // on `styledata`. The per-item guards in installOverlay make repeated fires
-  // (sprite/tiles/style swap) idempotent.
+  // The base style loads asynchronously and `styledata` fires repeatedly during
+  // load; (re)install the overlay and apply the Streets tweaks each time. The
+  // per-item guards in installOverlay make this idempotent.
   let fitted = false;
   const reinstall = () => {
+    if (!window.MAP_STYLE) tweakStreets(); // skip customizations on a MAP_STYLE override
     installOverlay(geojson, colorMatch);
     if (!fitted) { fitToData(geojson); fitted = true; }
   };
@@ -178,7 +183,6 @@ async function init() {
   if (map.isStyleLoaded()) reinstall();
 
   wireInteractions();
-  if (STYLES.length) buildStyleSwitcher();
   if (!STYLE_URL) {
     document.body.insertAdjacentHTML("beforeend",
       `<div style="position:absolute;top:1rem;left:50%;transform:translateX(-50%);padding:.6rem 1rem;background:#334;color:#fff;border-radius:6px;font:14px system-ui">Add a free Mapbox token to web/config.js to load a base map.</div>`);
