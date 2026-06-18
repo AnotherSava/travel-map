@@ -1,26 +1,30 @@
 "use strict";
 
-// Base maps shown in the in-page switcher (top-right). These need a free MapTiler
-// key in config.js (window.MAPTILER_KEY); without one, init() shows a prompt.
-function maptilerStyles(key) {
-  const url = (id) => `https://api.maptiler.com/maps/${id}/style.json?key=${key}`;
-  return [
-    { label: "Streets", url: url("streets-v2") },
-    { label: "Satellite hybrid", url: url("hybrid") },
-    { label: "Light (Dataviz)", url: url("dataviz") },
-  ];
-}
+// Needs a free Mapbox access token in config.js (window.MAPBOX_TOKEN); without
+// one, init() shows a prompt instead of a map.
+mapboxgl.accessToken = window.MAPBOX_TOKEN || "";
 
-const STYLES = window.MAPTILER_KEY ? maptilerStyles(window.MAPTILER_KEY) : [];
+// Base maps shown in the in-page switcher (top-right). The token is global, so
+// the style URLs carry no key.
+const MAPBOX_STYLES = [
+  { label: "Streets", url: "mapbox://styles/mapbox/streets-v12" },
+  { label: "Satellite hybrid", url: "mapbox://styles/mapbox/satellite-streets-v12" },
+  { label: "Light", url: "mapbox://styles/mapbox/light-v11" },
+  { label: "Dark", url: "mapbox://styles/mapbox/dark-v11" },
+];
+
+const STYLES = window.MAPBOX_TOKEN ? MAPBOX_STYLES : [];
 const STYLE_URL = window.MAP_STYLE || (STYLES[0] && STYLES[0].url);
 
 // data/ lives inside web/, so the whole bundle serves from web/.
 const DATA_URL = new URL("data/places.geojson", window.location.href).href;
 
-// Empty style keeps the app alive (stars still render) when no key is configured.
-const BLANK_STYLE = { version: 8, sources: {}, layers: [] };
-const map = new maplibregl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: [0, 20], zoom: 1.4 });
-map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-left");
+// Minimal style keeps the app alive (stars still render) when no token is
+// configured. Includes a public glyphs source so cluster-count labels work even
+// without a base map; a real Mapbox style supplies its own glyphs.
+const BLANK_STYLE = { version: 8, glyphs: "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf", sources: {}, layers: [] };
+const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: [0, 20], zoom: 1.4 });
+map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
 
 // Golden-angle hues give visually distinct, evenly spread colors for any count.
 function buildPalette(countries) {
@@ -101,16 +105,18 @@ function installOverlay(geojson, colorMatch) {
 }
 
 function wireInteractions() {
-  map.on("click", "clusters", async (e) => {
+  map.on("click", "clusters", (e) => {
     const feature = e.features[0];
-    const zoom = await map.getSource("places").getClusterExpansionZoom(feature.properties.cluster_id);
-    map.easeTo({ center: feature.geometry.coordinates, zoom });
+    map.getSource("places").getClusterExpansionZoom(feature.properties.cluster_id, (err, zoom) => {
+      if (err) return;
+      map.easeTo({ center: feature.geometry.coordinates, zoom });
+    });
   });
 
   map.on("click", "stars", (e) => {
     const { city, region, country } = e.features[0].properties;
     const where = [region, country].filter(Boolean).join(", ");
-    new maplibregl.Popup({ offset: 12 })
+    new mapboxgl.Popup({ offset: 12 })
       .setLngLat(e.features[0].geometry.coordinates)
       .setHTML(`<div class="popup__city">${escapeHtml(city)}</div><div class="popup__where">${escapeHtml(where)}</div>`)
       .addTo(map);
@@ -123,7 +129,7 @@ function wireInteractions() {
 }
 
 function fitToData(geojson) {
-  const bounds = new maplibregl.LngLatBounds();
+  const bounds = new mapboxgl.LngLatBounds();
   geojson.features.forEach((f) => bounds.extend(f.geometry.coordinates));
   if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: 60, maxZoom: 6, duration: 0 });
 }
@@ -160,18 +166,22 @@ async function init() {
   const palette = buildPalette(countries);
   const colorMatch = ["match", ["get", "country"], ...countries.flatMap((c) => [c, palette[c]]), "#888"];
 
+  // Switching the base style wipes custom sources/layers/images; re-install them
+  // on `styledata`. The per-item guards in installOverlay make repeated fires
+  // (sprite/tiles/style swap) idempotent.
   let fitted = false;
-  map.on("styledata", () => {
+  const reinstall = () => {
     installOverlay(geojson, colorMatch);
     if (!fitted) { fitToData(geojson); fitted = true; }
-  });
-  if (map.isStyleLoaded()) { installOverlay(geojson, colorMatch); if (!fitted) { fitToData(geojson); fitted = true; } }
+  };
+  map.on("styledata", reinstall);
+  if (map.isStyleLoaded()) reinstall();
 
   wireInteractions();
   if (STYLES.length) buildStyleSwitcher();
   if (!STYLE_URL) {
     document.body.insertAdjacentHTML("beforeend",
-      `<div style="position:absolute;top:1rem;left:50%;transform:translateX(-50%);padding:.6rem 1rem;background:#334;color:#fff;border-radius:6px;font:14px system-ui">Add a free MapTiler key to web/config.js to load a base map.</div>`);
+      `<div style="position:absolute;top:1rem;left:50%;transform:translateX(-50%);padding:.6rem 1rem;background:#334;color:#fff;border-radius:6px;font:14px system-ui">Add a free Mapbox token to web/config.js to load a base map.</div>`);
   }
 }
 

@@ -13,7 +13,7 @@ current use case is "places I've visited," but it works identically for any city
 Two parts:
 
 1. A small Python **build step** geocodes the input into a GeoJSON file.
-2. A static **MapLibre GL JS** web app renders that GeoJSON.
+2. A static **Mapbox GL JS** web app renders that GeoJSON.
 
 ```
 web/data/visited.json  ──(scripts/build_geojson.py)──>  web/data/places.geojson  ──> map
@@ -23,8 +23,8 @@ web/data/visited.json  ──(scripts/build_geojson.py)──>  web/data/places.
 
 `web/data/visited.json` — a list of countries, each with cities. A city may carry an
 optional intermediate `region` level (state / province / etc.) used for display and to
-disambiguate geocoding. Producing this file is out of scope here; a small sample is
-committed so the pipeline runs out of the box.
+disambiguate geocoding. Producing this file is out of scope here; the committed
+`visited.json` holds the actual visited-places list.
 
 ```json
 [
@@ -75,15 +75,15 @@ Then open <http://localhost:8000/>.
 
 ### Base maps
 
-The base map uses [MapTiler](https://cloud.maptiler.com/), so it needs a free key. Get
-one (Account → Keys), then:
+The base map uses [Mapbox](https://account.mapbox.com/), so it needs a free access
+token. Get one (Tokens), then:
 
 ```bash
-cp web/config.example.js web/config.js   # then paste your key into config.js
+cp web/config.example.js web/config.js   # then paste your token into config.js
 ```
 
-A dropdown (top-right) switches the base map live between MapTiler's Streets, Satellite
-hybrid, and Light (Dataviz) styles. Without a key the app shows a prompt instead of a map.
+A dropdown (top-right) switches the base map live between Mapbox's Streets, Satellite
+hybrid, Light, and Dark styles. Without a token the app shows a prompt instead of a map.
 
 `web/config.js` is gitignored. You can also pin one style via `window.MAP_STYLE`.
 
@@ -95,10 +95,10 @@ hybrid, and Light (Dataviz) styles. Without a key the app shows a prompt instead
 │   ├── requirements.txt
 │   └── build_geojson.py     # writes into web/data/
 └── web/                     # the deployable bundle
-    ├── index.html           # loads MapLibre GL JS from CDN
+    ├── index.html           # loads Mapbox GL JS from CDN
     ├── app.js               # clustered star layer, color-by-country, popups, style switcher
     ├── style.css
-    ├── config.example.js    # template for the MapTiler key
+    ├── config.example.js    # template for the Mapbox token
     └── data/
         ├── visited.json     # INPUT: countries → cities (+ optional region)
         ├── coords_cache.json # geocode cache (committed, hand-editable)

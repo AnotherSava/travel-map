@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 venv/
 
-# Web local config (real MapTiler key — never commit)
+# Web local config (real Mapbox token — never commit)
 web/config.js
 
 # OS / editor
