@@ -20,6 +20,11 @@ from typing import Any
 from geopy.extra.rate_limiter import RateLimiter
 from geopy.geocoders import Nominatim
 
+# City names carry non-ASCII characters; force UTF-8 output so progress prints
+# don't crash on Windows consoles that default to a legacy code page.
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "web" / "data"
 INPUT_PATH = DATA_DIR / "visited.json"
@@ -44,9 +49,15 @@ def write_json(path: Path, data: Any, sort_keys: bool = False) -> None:
 
 
 def geocode_query(name: str, region: str | None, country: str) -> str:
-    """Build the ``"<name>, <region?>, <country>"`` query used as the cache key."""
+    """Build the ``"<name>, <region?>, <country>"`` query used as the cache key.
+
+    Parenthetical suffixes are stripped from both name and region for the query
+    (e.g. a region like ``"Saint Petersburg (federal city)"`` otherwise confuses
+    the geocoder); the original values are still kept for display.
+    """
     clean_name = PAREN_RE.sub("", name).strip()
-    parts = [clean_name] + ([region] if region else []) + [country]
+    clean_region = PAREN_RE.sub("", region).strip() if region else ""
+    parts = [clean_name] + ([clean_region] if clean_region else []) + [country]
     return ", ".join(parts)
 
 
@@ -58,8 +69,8 @@ def main() -> int:
     countries = load_json(INPUT_PATH)
     cache: dict[str, list[float]] = load_json(CACHE_PATH) if CACHE_PATH.exists() else {}
 
-    geolocator = Nominatim(user_agent=USER_AGENT)
-    geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1, max_retries=2, error_wait_seconds=5.0)
+    geolocator = Nominatim(user_agent=USER_AGENT, timeout=10)
+    geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1, max_retries=3, error_wait_seconds=5.0)
 
     features: list[dict[str, Any]] = []
     hits = misses = failures = 0
@@ -86,6 +97,9 @@ def main() -> int:
                 cache[query] = coords
                 misses += 1
                 print(f"  geocoded:  {query} -> {coords}")
+                # Persist after each new geocode so a crash (or flaky network)
+                # never loses progress and re-runs resume from the cache.
+                write_json(CACHE_PATH, cache, sort_keys=True)
 
             features.append({
                 "type": "Feature",

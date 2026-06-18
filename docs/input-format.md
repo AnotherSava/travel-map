@@ -59,9 +59,10 @@ For each city the build step constructs a geocoding query by joining, with `", "
 So `Sapporo` above is geocoded as `Sapporo, Hokkaido, Japan`, and `New York` as
 `New York, United States`.
 
-- **Parenthetical suffixes are stripped before geocoding.** `"Bruges (Brugge)"` is geocoded
-  as `"Bruges"` but still displayed in full in the popup. Use this for local-language or
-  alternate names that would otherwise confuse the geocoder.
+- **Parenthetical suffixes are stripped before geocoding** — from both name and region.
+  `"Bruges (Brugge)"` is geocoded as `"Bruges"`, and a region like `"Saint Petersburg
+  (federal city)"` as `"Saint Petersburg"`; both are still displayed in full in the popup.
+  Use this for local-language or alternate names that would otherwise confuse the geocoder.
 - **`region` is optional but recommended** when a name is ambiguous (e.g. multiple
   "Springfield"s) or when the country has a strong state/province level.
 
@@ -81,5 +82,5 @@ Running the build step produces two files next to the input:
 
 - The file is generic: it describes any list of cities, not just "places visited" — the same
   format works for, say, every city with a given restaurant chain.
-- Producing/seeding `visited.json` itself is out of scope for the map build; a small sample
-  is committed so the pipeline runs out of the box.
+- Producing/seeding `visited.json` itself is out of scope for the map build; the committed
+  file holds the actual visited-places list.
