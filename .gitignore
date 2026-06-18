@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Web local config (real MapTiler key — never commit)
+web/config.js
+
+# OS / editor
+.DS_Store
+Thumbs.db

@@ -1,0 +1,110 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7638947,
+          35.6768601
+        ]
+      },
+      "properties": {
+        "city": "Tokyo",
+        "country": "Japan",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.3542924,
+          43.061936
+        ]
+      },
+      "properties": {
+        "city": "Sapporo",
+        "country": "Japan",
+        "region": "Hokkaido"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.330062,
+          47.6038321
+        ]
+      },
+      "properties": {
+        "city": "Seattle",
+        "country": "United States",
+        "region": "Washington"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0060152,
+          40.7127281
+        ]
+      },
+      "properties": {
+        "city": "New York",
+        "country": "United States",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.320041,
+          48.8588897
+        ]
+      },
+      "properties": {
+        "city": "Paris",
+        "country": "France",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6063916,
+          55.625578
+        ]
+      },
+      "properties": {
+        "city": "Moscow",
+        "country": "Russia",
+        "region": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.226772,
+          51.2085526
+        ]
+      },
+      "properties": {
+        "city": "Bruges (Brugge)",
+        "country": "Belgium",
+        "region": "West Flanders"
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "country": "Japan",
+    "cities": [
+      { "name": "Tokyo" },
+      { "name": "Sapporo", "region": "Hokkaido" }
+    ]
+  },
+  {
+    "country": "United States",
+    "cities": [
+      { "name": "Seattle", "region": "Washington" },
+      { "name": "New York" }
+    ]
+  },
+  {
+    "country": "France",
+    "cities": [
+      { "name": "Paris" }
+    ]
+  },
+  {
+    "country": "Russia",
+    "cities": [
+      { "name": "Moscow" }
+    ]
+  },
+  {
+    "country": "Belgium",
+    "cities": [
+      { "name": "Bruges (Brugge)", "region": "West Flanders" }
+    ]
+  }
+]
