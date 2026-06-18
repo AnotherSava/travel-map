@@ -1,8 +1,8 @@
 # Visited-places world map
 
 An interactive world map (zoom/pan) that plots a set of cities, each rendered as a
-**star** colored by country and clustered when zoomed out. Click a star for the city
-name; click a cluster to zoom in.
+**star** (green by default, or a per-city/per-country color set in the input) and
+clustered when zoomed out. Click a star for the city name; click a cluster to zoom in.
 
 The project is generic: it reads cities from an input file and displays them. The
 current use case is "places I've visited," but it works identically for any city list
@@ -23,8 +23,9 @@ web/data/visited.json  ──(scripts/build_geojson.py)──>  web/data/places.
 
 `web/data/visited.json` — a list of countries, each with cities. A city may carry an
 optional intermediate `region` level (state / province / etc.) used for display and to
-disambiguate geocoding. Producing this file is out of scope here; the committed
-`visited.json` holds the actual visited-places list.
+disambiguate geocoding, and an optional `color` (also settable on the country, applying to
+all its cities) overriding the default green star. Producing this file is out of scope here;
+the committed `visited.json` holds the actual visited-places list.
 
 ```json
 [
@@ -97,12 +98,13 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 │   └── build_geojson.py     # writes into web/data/
 └── web/                     # the deployable bundle
     ├── index.html           # loads Mapbox GL JS from CDN
-    ├── app.js               # clustered star layer, color-by-country, popups, Streets tweaks
+    ├── app.js               # clustered star layer, per-feature star color, popups, Streets tweaks
     ├── style.css
     ├── config.example.js    # template for the Mapbox token
     └── data/
-        ├── visited.json     # INPUT: countries → cities (+ optional region)
+        ├── visited.json     # INPUT: countries → cities (+ optional region, color)
         ├── coords_cache.json # geocode cache (committed, hand-editable)
+        ├── ranks.json       # label-prominence cache (committed, hand-editable)
         └── places.geojson   # generated; consumed by the web app
 ```
 

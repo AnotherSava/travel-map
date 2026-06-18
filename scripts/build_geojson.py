@@ -29,12 +29,36 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "web" / "data"
 INPUT_PATH = DATA_DIR / "visited.json"
 CACHE_PATH = DATA_DIR / "coords_cache.json"
+# Committed cache of each city's Mapbox label prominence, keyed "<city>|<cc>".
+# Baked into the output so the web map sizes labels correctly from the first frame
+# instead of waiting for its runtime harvest. Hand-editable; regenerate by exploring
+# the map (see the web app's harvestCityRanks) and dumping the collected ranks.
+RANKS_PATH = DATA_DIR / "ranks.json"
 OUTPUT_PATH = DATA_DIR / "places.geojson"
 
 # Nominatim's usage policy requires a descriptive, identifying user agent.
 USER_AGENT = "travel-map-visited-places/1.0 (https://github.com/AnotherSava/travel-map)"
 # Parenthetical suffixes ("Bruges (Brugge)") confuse the geocoder; strip them.
 PAREN_RE = re.compile(r"\s*\([^)]*\)")
+
+# Country name -> ISO 3166-1 alpha-2 code, emitted per feature as ``cc``. The web
+# map matches this against the base style's ``iso_3166_1`` so it suppresses the
+# base label only for the visited city, not for same-named cities in other
+# countries (e.g. London, GB vs London, CA). Building errors on any country not
+# listed here, so a newly added country surfaces immediately instead of silently
+# losing its label suppression.
+COUNTRY_ISO = {
+    "Andorra": "AD", "Austria": "AT", "Azerbaijan": "AZ", "Belarus": "BY",
+    "Belgium": "BE", "Bulgaria": "BG", "Canada": "CA", "Croatia": "HR",
+    "Cyprus": "CY", "Czech Republic": "CZ", "Egypt": "EG", "Estonia": "EE",
+    "Finland": "FI", "France": "FR", "Georgia": "GE", "Germany": "DE",
+    "Greece": "GR", "Hungary": "HU", "Israel": "IL", "Italy": "IT",
+    "Japan": "JP", "Jordan": "JO", "Montenegro": "ME", "Philippines": "PH",
+    "Poland": "PL", "Russia": "RU", "Slovakia": "SK", "Spain": "ES",
+    "Sri Lanka": "LK", "Switzerland": "CH", "Thailand": "TH", "Tunisia": "TN",
+    "Turkey": "TR", "Ukraine": "UA", "United Kingdom": "GB",
+    "United States": "US", "Vatican City": "VA",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -68,6 +92,7 @@ def main() -> int:
 
     countries = load_json(INPUT_PATH)
     cache: dict[str, list[float]] = load_json(CACHE_PATH) if CACHE_PATH.exists() else {}
+    ranks: dict[str, int] = load_json(RANKS_PATH) if RANKS_PATH.exists() else {}
 
     geolocator = Nominatim(user_agent=USER_AGENT, timeout=10)
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1, max_retries=3, error_wait_seconds=5.0)
@@ -78,9 +103,18 @@ def main() -> int:
 
     for entry in countries:
         country = entry["country"]
+        if country not in COUNTRY_ISO:
+            print(f"error: no ISO code mapped for country {country!r}; add it to COUNTRY_ISO", file=sys.stderr)
+            return 1
+        country_cc = COUNTRY_ISO[country]
+        # An optional ``color`` set on the country applies to all its cities; a
+        # city-level ``color`` overrides it. Cities with neither are left
+        # uncolored and the web map renders them in its default green.
+        country_color = entry.get("color")
         for city in entry["cities"]:
             name = city["name"]
             region = city.get("region")
+            color = city.get("color", country_color)
             query = geocode_query(name, region, country)
 
             if query in cache:
@@ -101,10 +135,16 @@ def main() -> int:
                 # never loses progress and re-runs resume from the cache.
                 write_json(CACHE_PATH, cache, sort_keys=True)
 
+            properties: dict[str, Any] = {"city": name, "country": country, "region": region, "cc": country_cc}
+            if color:
+                properties["color"] = color
+            rank = ranks.get(f"{name}|{country_cc}")
+            if rank is not None:
+                properties["rank"] = rank
             features.append({
                 "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": coords},
-                "properties": {"city": name, "country": country, "region": region},
+                "properties": properties,
             })
 
     write_json(CACHE_PATH, cache, sort_keys=True)
