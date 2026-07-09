@@ -2852,6 +2852,22 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          80.4993876,
+          6.8094211
+        ]
+      },
+      "properties": {
+        "city": "Adam's Peak",
+        "country": "Sri Lanka",
+        "region": null,
+        "cc": "LK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           80.4106096,
           8.334985
         ]
@@ -2862,6 +2878,22 @@
         "region": null,
         "cc": "LK",
         "rank": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.8306961,
+          6.8468506
+        ]
+      },
+      "properties": {
+        "city": "Arugam Bay",
+        "country": "Sri Lanka",
+        "region": null,
+        "cc": "LK"
       }
     },
     {

@@ -310,7 +310,9 @@
   {
     "country": "Sri Lanka",
     "cities": [
+      { "name": "Adam's Peak" },
       { "name": "Anuradhapura" },
+      { "name": "Arugam Bay" },
       { "name": "Colombo" },
       { "name": "Dambulla" },
       { "name": "Hikkaduwa" },
