@@ -391,6 +391,7 @@
       { "name": "Denver", "region": "Colorado" },
       { "name": "Indianapolis", "region": "Indiana" },
       { "name": "Boston", "region": "Massachusetts" },
+      { "name": "Detroit", "region": "Michigan" },
       { "name": "New York", "region": "New York" },
       { "name": "Portland", "region": "Oregon" },
       { "name": "Philadelphia", "region": "Pennsylvania" },

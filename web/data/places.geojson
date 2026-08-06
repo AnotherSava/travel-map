@@ -3627,6 +3627,22 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -83.0466403,
+          42.3315509
+        ]
+      },
+      "properties": {
+        "city": "Detroit",
+        "country": "United States",
+        "region": "Michigan",
+        "cc": "US"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -74.0060152,
           40.7127281
         ]
