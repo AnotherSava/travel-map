@@ -76,6 +76,47 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// Format an ISO visit date at whatever precision it carries: "2019-05-14" ->
+// "14 May 2019", "2019-05" -> "May 2019", "2019" -> "2019". Parsed by parts (not
+// `new Date`) to avoid a UTC shift moving a day-precision date across midnight.
+function formatVisitDate(iso) {
+  const [y, m, d] = String(iso).split("-");
+  if (!y) return "";
+  const mon = m ? MONTH_ABBR[Number(m) - 1] : null;
+  if (d && mon) return `${Number(d)} ${mon} ${y}`;
+  if (mon) return `${mon} ${y}`;
+  return y;
+}
+
+// Normalize a visits value to a newest-first array. Visits now come from the
+// decrypted in-memory store as real arrays (see popupHtml); the string branch is a
+// cheap defensive path for a value that ever arrives JSON-encoded.
+function parseVisits(raw) {
+  if (!raw) return [];
+  const arr = typeof raw === "string" ? JSON.parse(raw) : raw;
+  if (!Array.isArray(arr)) return [];
+  // Skip any non-object element (e.g. a stray null from a hand-edit) so one bad
+  // entry can't throw and suppress the whole popup.
+  return arr.filter((v) => v && typeof v === "object").slice().sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+}
+
+function visitsHtml(raw) {
+  const visits = parseVisits(raw);
+  if (!visits.length) return "";
+  const items = visits.map((v) => {
+    const date = v.date ? `<span class="popup__visit-date">${escapeHtml(formatVisitDate(v.date))}</span>` : "";
+    const activities = Array.isArray(v.activities)
+      ? v.activities.map((a) => `<span class="popup__visit-activity">${escapeHtml(a)}</span>`).join("")
+      : "";
+    const head = date || activities ? `<div class="popup__visit-head">${date}${activities}</div>` : "";
+    const comment = v.comment ? `<div class="popup__visit-comment">${escapeHtml(v.comment)}</div>` : "";
+    return `<div class="popup__visit">${head}${comment}</div>`;
+  });
+  return `<div class="popup__visits">${items.join("")}</div>`;
+}
+
 // Hide every road-family layer in the loaded style for a clean, roadless map.
 function hideRoadLayers() {
   for (const layer of map.getStyle().layers) {
@@ -203,6 +244,14 @@ function cityLabelTypography() {
 // and push the update back through the source.
 let placesData = null;
 
+// Decrypted visits keyed "<city>|<cc>" (see web/crypto.js): null = locked, an
+// object = unlocked. Kept only in memory — never persisted — so a reload re-locks.
+let decryptedVisits = null;
+// The currently-open star popup and its feature props, so unlock/lock can re-render
+// it in place.
+let openPopup = null;
+let openPopupProps = null;
+
 // Stamp each visited city with the base map's prominence (`symbolrank`) so the size
 // ramp can match the base tier per city. Ranks are normally baked into the GeoJSON at
 // build time (web/data/ranks.json), correct from the first frame; this is the live
@@ -301,12 +350,16 @@ function wireInteractions() {
   });
 
   map.on("click", "stars", (e) => {
-    const { city, region, country } = e.features[0].properties;
-    const where = [region, country].filter(Boolean).join(", ");
-    new mapboxgl.Popup({ offset: 12 })
+    const props = e.features[0].properties; // city, cc, region, country
+    const popup = new mapboxgl.Popup({ offset: 12 })
       .setLngLat(e.features[0].geometry.coordinates)
-      .setHTML(`<div class="popup__city">${escapeHtml(city)}</div><div class="popup__where">${escapeHtml(where)}</div>`)
+      .setHTML(popupHtml(props))
       .addTo(map);
+    openPopup = popup;
+    openPopupProps = props;
+    // Guard the reset so a stale popup closing (e.g. superseded by a new one) can't
+    // null out the current popup's references.
+    popup.on("close", () => { if (openPopup === popup) { openPopup = null; openPopupProps = null; } });
   });
 
   for (const id of ["clusters", "stars"]) {
@@ -314,6 +367,117 @@ function wireInteractions() {
     map.on("mouseleave", id, () => { map.getCanvas().style.cursor = ""; });
   }
 }
+
+// Star popup HTML: always the city + place; the visit log only when unlocked
+// (decryptedVisits set) and this city has entries. Both the click handler and the
+// lock handlers call this, so an open popup and future popups stay in sync.
+function popupHtml(props) {
+  const where = [props.region, props.country].filter(Boolean).join(", ");
+  let html = `<div class="popup__city">${escapeHtml(props.city)}</div><div class="popup__where">${escapeHtml(where)}</div>`;
+  if (decryptedVisits) html += visitsHtml(decryptedVisits[props.city + KEY_SEP + props.cc]);
+  return html;
+}
+
+// ---- Lock control ------------------------------------------------------------
+// The visit log ships encrypted (web/data/visits.enc); entering the password
+// decrypts it in-memory (window.decryptVisits, web/crypto.js) and popups start
+// showing visit details. A soft client-side gate, not server-side auth.
+const LOCK_CLOSED = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 10V7a5 5 0 0 1 10 0v3"/><rect x="5" y="10" width="14" height="10" rx="2" fill="currentColor"/></svg>`;
+const LOCK_OPEN = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 10V7a5 5 0 0 1 9.9-1"/><rect x="5" y="10" width="14" height="10" rx="2" fill="currentColor"/></svg>`;
+
+function setUnlocked(ui, on) {
+  ui.btn.classList.toggle("lock-ctrl__btn--open", on);
+  ui.btn.innerHTML = on ? LOCK_OPEN : LOCK_CLOSED;
+  const label = on ? "Visit details unlocked — click to lock" : "Unlock visit details";
+  ui.btn.title = label;
+  ui.btn.setAttribute("aria-label", label);
+  if (!on) {
+    decryptedVisits = null; // drop the plaintext
+    if (openPopup && openPopupProps) openPopup.setHTML(popupHtml(openPopupProps));
+  }
+}
+
+function openPanel(ui) {
+  ui.panel.hidden = false;
+  ui.btn.setAttribute("aria-expanded", "true");
+  ui.error.hidden = true;
+  ui.input.value = "";
+  ui.input.setAttribute("aria-invalid", "false");
+  ui.input.focus();
+}
+
+function closePanel(ui) {
+  ui.panel.hidden = true;
+  ui.btn.setAttribute("aria-expanded", "false");
+  ui.input.value = ""; // don't let the entered password outlive the panel
+  ui.btn.focus();
+}
+
+async function submitPassword(e, ui) {
+  e.preventDefault();
+  ui.submit.disabled = true;
+  ui.error.hidden = true;
+  ui.input.setAttribute("aria-invalid", "false");
+  try {
+    // Trim so surrounding whitespace never matters (matches the owner-side
+    // resolvePassword, which trims every source before deriving the key).
+    decryptedVisits = await window.decryptVisits(ui.input.value.trim()); // throws on wrong password
+    setUnlocked(ui, true);
+    closePanel(ui); // also clears the password field
+    if (openPopup && openPopupProps) openPopup.setHTML(popupHtml(openPopupProps));
+  } catch (err) {
+    // A load/parse failure (e.g. a missing visits.enc) is not a wrong password —
+    // say so, instead of sending the owner chasing a password that is correct.
+    ui.error.textContent = err && err.code === "LOAD_FAILED" ? "Couldn't load the visit data." : "That password didn't work.";
+    ui.error.hidden = false;
+    ui.input.value = "";
+    ui.input.setAttribute("aria-invalid", "true");
+    ui.input.focus();
+  } finally {
+    ui.submit.disabled = false;
+  }
+}
+
+class LockControl {
+  onAdd(map) {
+    this._map = map;
+    const c = document.createElement("div");
+    c.className = "mapboxgl-ctrl mapboxgl-ctrl-group lock-ctrl";
+    c.innerHTML = `
+      <button type="button" class="lock-ctrl__btn" aria-label="Unlock visit details" title="Unlock visit details" aria-expanded="false" aria-controls="lock-panel">${LOCK_CLOSED}</button>
+      <form id="lock-panel" class="lock-panel" hidden>
+        <div class="lock-panel__head">
+          <label class="lock-panel__label" for="lock-pw">Password</label>
+          <button type="button" class="lock-panel__close" aria-label="Cancel">×</button>
+        </div>
+        <div class="lock-panel__row">
+          <input class="lock-panel__input" id="lock-pw" type="password" autocomplete="current-password" aria-describedby="lock-err" />
+          <button type="submit" class="lock-panel__submit" aria-label="Unlock">→</button>
+        </div>
+        <p id="lock-err" class="lock-panel__error" role="alert" aria-live="polite" hidden>That password didn't work.</p>
+      </form>`;
+    const ui = {
+      btn: c.querySelector(".lock-ctrl__btn"),
+      panel: c.querySelector(".lock-panel"),
+      input: c.querySelector(".lock-panel__input"),
+      error: c.querySelector(".lock-panel__error"),
+      submit: c.querySelector(".lock-panel__submit"),
+      close: c.querySelector(".lock-panel__close"),
+    };
+    ui.btn.addEventListener("click", () => {
+      if (decryptedVisits) return setUnlocked(ui, false); // unlocked -> re-lock
+      if (ui.panel.hidden) openPanel(ui); else closePanel(ui); // locked -> toggle panel
+    });
+    ui.close.addEventListener("click", () => closePanel(ui));
+    ui.panel.addEventListener("submit", (e) => submitPassword(e, ui));
+    ui.panel.addEventListener("keydown", (e) => { if (e.key === "Escape") { e.stopPropagation(); closePanel(ui); } });
+    this._container = c;
+    return c;
+  }
+  onRemove() { this._container.remove(); this._map = undefined; }
+}
+
+map.addControl(new LockControl(), "top-right");
 
 function fitToData(geojson) {
   const bounds = new mapboxgl.LngLatBounds();

@@ -23,6 +23,9 @@ Each **city object**:
 | `region` | string | no | Intermediate level — state, province, oblast, etc. Disambiguates geocoding and is shown in the popup. Omit when not needed. |
 | `color` | string | no | Star color for this city. Any CSS color string. Overrides the country-level `color`; if neither is set, the map's default green is used. |
 
+Per-city trip details (dates, activities, comments) are **not** part of this file — they live in a
+separate, encrypted, password-gated source; see [Enriched visit log](#enriched-visit-log-encrypted) below.
+
 ## Example
 
 ```json
@@ -92,11 +95,73 @@ The build reads two committed, hand-editable cache files and writes one output:
   falls back to a mid-size default (and the runtime harvest fills it in live).
 - `web/data/places.geojson` — one GeoJSON Point feature per city, with properties
   `{ city, country, region, cc }` (`region` is `null` when omitted), plus `color` when a
-  resolved color exists and `rank` when one is cached. `cc` is the ISO 3166-1 alpha-2 country
+  resolved color exists and `rank` when one is cached. This artifact is **public**: it carries
+  locations only, never trip details. `cc` is the ISO 3166-1 alpha-2 country
   code (derived from `country` via `COUNTRY_ISO` in the build); the web map pairs it with the
   base style's `iso_3166_1` so it suppresses the base label only for the visited city, not
   same-named cities in other countries. A country missing from `COUNTRY_ISO` is a build error.
   This is what the web app loads.
+
+## Enriched visit log (encrypted)
+
+Trip details — when you visited a place, what you did, and any comment — are kept **out of the
+public data** and shown on the map only after a password. They live in a separate source file,
+encrypted at build time; the browser decrypts them in memory when the owner types the password
+into the map's lock control (top-right).
+
+### `web/data/visits.source.json` — owner-only plaintext (gitignored)
+
+An object keyed `"<city>|<cc>"` — the exact `name` from `visited.json` (parentheticals included,
+e.g. `"Bruges (Brugge)"`) joined by `|` to the ISO country code, matching the `ranks.json`
+convention. Each value is an array of **visit objects**, rendered newest-first in the popup:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `date` | string | no | ISO date at any precision: `"2019"`, `"2019-05"`, or `"2019-05-14"`. Sorts visits (newest first) and renders at its precision (`14 May 2019` / `May 2019` / `2019`). |
+| `activities` | array of strings | no | Free-text trip/activity types (`["beach"]`, `["hiking", "food"]`, …), each shown as a pill. Not a fixed vocabulary — any string is accepted and shown as-is. |
+| `comment` | string | no | Free text shown under the visit. |
+
+```json
+{
+  "Kyoto|JP":   [ { "date": "2025-04", "activities": ["temples", "food"] } ],
+  "Seattle|US": [ { "date": "2024", "activities": ["conference"], "comment": "rainy but worth it" } ]
+}
+```
+
+(Example values above are fictional — this doc must never reproduce the real contents of
+`visits.source.json`.) This file is **gitignored** — never committed, never shipped. Its only stored form is the
+encrypted `web/data/visits.enc`.
+
+### `web/data/visits.enc` — committed ciphertext + shipped artifact
+
+The AES-256-GCM envelope produced from `visits.source.json` by `scripts/visits-encrypt.mjs`
+(PBKDF2-HMAC-SHA256, 600k iterations; key derived from the password). It is committed — doubling as
+the encrypted backup of the source — and shipped to the site, where `web/crypto.js` decrypts it in
+memory after the owner enters the password. Self-describing: `{ v, kdf, hash, iterations, salt, iv, ct }`.
+
+### Owner workflow
+
+The single password lives in Doppler (project `travel-map`, secret `TRAVEL_VISITS_PASSWORD`) and is the
+same value a viewer types on the site. Both scripts resolve it via the `TRAVEL_VISITS_PASSWORD` env
+var → Doppler → hidden prompt.
+
+```
+doppler run -p travel-map -c dev -- node scripts/visits-decrypt.mjs   # restore source on a fresh clone
+# edit web/data/visits.source.json
+doppler run -p travel-map -c dev -- node scripts/visits-encrypt.mjs   # re-encrypt -> visits.enc
+git add web/data/visits.enc
+bash scripts/deploy.sh                                          # build_site.mjs blocks a stale visits.enc
+```
+
+### Security model — read this
+
+This is **soft, client-side obfuscation, not access control.** The ciphertext ships publicly and is
+world-downloadable; anyone can brute-force it offline with no rate limit. Security equals the
+password's entropy times the KDF cost — the 600k iterations only slow each guess, they don't rescue
+a weak password. It hides trip details from casual viewers, scrapers, and repo browsers; it is **not**
+suitable for genuinely sensitive data. Use a randomly generated ~6-word passphrase (≥70 bits) kept in
+a password manager. A lost password means the enriched log is unrecoverable (the plaintext is never
+committed), and rotation is non-retroactive (the old ciphertext stays in git history).
 
 ## Notes
 

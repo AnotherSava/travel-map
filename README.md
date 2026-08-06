@@ -3,6 +3,8 @@
 An interactive world map (zoom/pan) that plots a set of cities, each rendered as a
 **star** (green by default, or a per-city/per-country color set in the input) and
 clustered when zoomed out. Click a star for the city name; click a cluster to zoom in.
+When unlocked with a password (the top-right lock control), each star also shows that
+city's trip log — dates, activities, and comments — kept encrypted otherwise.
 
 The project is generic: it reads cities from an input file and displays them. The
 current use case is "places I've visited," but it works identically for any city list
@@ -41,6 +43,10 @@ geocoded as `"Bruges"` but still displayed in full).
 
 See [docs/input-format.md](docs/input-format.md) for the full schema, field semantics, and
 geocode-cache details.
+
+Per-city **trip details** (dates, activities, comments) are not part of `visited.json` — they
+live in a separate, encrypted, password-gated source, shown on the map only after the owner
+enters a password. See [Enriched visit log](docs/input-format.md#enriched-visit-log-encrypted).
 
 ## Build
 
@@ -96,39 +102,53 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 ├── scripts/
 │   ├── requirements.txt
 │   ├── build_geojson.py     # writes into web/data/
-│   └── build_site.mjs       # stages web/ → dist/travel/ for deploy
+│   ├── build_site.mjs       # stages web/ → dist/travel/ for deploy
+│   ├── crypto/              # shared PBKDF2 + AES-GCM envelope (Node ESM)
+│   ├── visits-encrypt.mjs   # visits.source.json → visits.enc
+│   └── visits-decrypt.mjs   # visits.enc → visits.source.json (fresh clone)
 └── web/                     # the deployable bundle
     ├── index.html           # loads Mapbox GL JS from CDN
-    ├── app.js               # clustered star layer, per-feature star color, popups, Streets tweaks
+    ├── app.js               # star layer, star color, popups, lock control, Streets tweaks
+    ├── crypto.js            # in-browser decrypt of visits.enc (mirror of scripts/crypto)
     ├── style.css
     ├── config.example.js    # template for the Mapbox token
     └── data/
-        ├── visited.json     # INPUT: countries → cities (+ optional region, color)
+        ├── visited.json      # INPUT: countries → cities (+ optional region, color)
         ├── coords_cache.json # geocode cache (committed, hand-editable)
-        ├── ranks.json       # label-prominence cache (committed, hand-editable)
-        └── places.geojson   # generated; consumed by the web app
+        ├── ranks.json        # label-prominence cache (committed, hand-editable)
+        ├── places.geojson    # generated; consumed by the web app
+        └── visits.enc        # encrypted trip log (committed, shipped; in-browser unlock)
 ```
 
 ## Hosting
 
-The site is published to **Cloudflare Pages** under a `/travel` subpath. A small staging
-step prepares a deployable `dist/`:
+The site is published to **Cloudflare Pages** under a `/travel` subpath. Secrets are managed
+with [Doppler](https://www.doppler.com/) (project `travel-map`, config `dev`) and injected at
+build/deploy time via `doppler run`, so nothing sensitive is written to disk:
+
+- `MAPBOX_TOKEN` — production Mapbox token, URL-restricted to the live domain.
+- `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` — referenced from a shared `tools` Doppler
+  project, so one Cloudflare token covers every site.
+- `TRAVEL_VISITS_PASSWORD` — unlocks the encrypted visit log (also used by the visits scripts).
+
+A staging step prepares a deployable `dist/`:
 
 ```bash
-node --env-file=.env scripts/build_site.mjs
+doppler run -p travel-map -c dev -- node scripts/build_site.mjs
 ```
 
 This copies `web/` → `dist/travel/` (so the map serves under `/travel/`), generates
-`dist/travel/config.js` from `MAPBOX_TOKEN`, and writes `dist/_redirects` pointing the
-site root at `/travel/`. Copy `.env.example` to `.env` and set `MAPBOX_TOKEN` (a
-production token, URL-restricted to the live domain) first.
+`dist/travel/config.js` from `MAPBOX_TOKEN`, content-hashes the local assets for cache-busting,
+and writes `dist/_redirects` pointing the site root at `/travel/`. It refuses to build if
+`web/data/visits.enc` is older than a locally-edited `visits.source.json`.
 
-Deploy the staged folder with Wrangler (direct upload):
+Deploy the staged folder with Wrangler (direct upload); `doppler run` supplies the Cloudflare
+credentials:
 
 ```bash
-npx wrangler pages deploy dist --project-name <project> --branch main
+doppler run -p travel-map -c dev -- npx wrangler pages deploy dist --project-name <project> --branch main
 ```
 
-Wrangler authenticates from `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in `.env`, or
-a prior `wrangler login`. `web/` stays a self-contained static bundle, so it can also be
-dropped onto any other static host as-is.
+`web/` stays a self-contained static bundle, so it can also be dropped onto any other static
+host as-is. (`.env.example` lists the same variables for anyone preferring a local `.env` with
+`node --env-file=.env` over Doppler.)

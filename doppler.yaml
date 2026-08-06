@@ -1,0 +1,3 @@
+setup:
+  project: travel-map
+  config: dev

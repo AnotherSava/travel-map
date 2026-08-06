@@ -19,3 +19,180 @@ html, body {
 .popup__where {
   color: #555;
 }
+
+.popup__visits {
+  margin-top: 6px;
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+}
+
+.popup__visit + .popup__visit {
+  margin-top: 6px;
+}
+
+.popup__visit-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.popup__visit-date {
+  color: #555;
+}
+
+.popup__visit-activity {
+  font-size: 11px;
+  color: #2a6f4b;
+  background: #e7f2ec;
+  border-radius: 3px;
+  padding: 0 5px;
+}
+
+.popup__visit-comment {
+  margin-top: 2px;
+  color: #333;
+}
+
+/* Lock control: unlock visit details with a password (see app.js LockControl). */
+.lock-ctrl {
+  position: relative;
+}
+
+.lock-ctrl__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555; /* matches .popup__where muted grey */
+}
+
+.lock-ctrl__btn--open {
+  color: #2e8b57; /* star green — the subtle "unlocked" cue */
+}
+
+/* Must beat `.lock-panel { display: grid }` below, or the `hidden` attribute is
+   ignored and the panel shows on load instead of only after the lock is clicked. */
+.lock-panel[hidden] {
+  display: none;
+}
+
+.lock-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  width: 190px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font: 13px/1.4 system-ui, sans-serif; /* mirrors .mapboxgl-popup-content */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* pin the column to the panel width so a wide row can't push the right-edge buttons outside the dialog */
+  gap: 6px;
+}
+
+.lock-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lock-panel__label {
+  color: #555;
+}
+
+/* The `.lock-panel` prefix beats Mapbox's `.mapboxgl-ctrl-group button` (0,2,0 >
+   0,1,1), which otherwise forces these panel buttons to 29px transparent controls. */
+.lock-panel .lock-panel__close {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: none;
+  color: #999;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+.lock-panel .lock-panel__head .lock-panel__close:hover {
+  background: none; /* out-specify Mapbox's #eee button:hover so the × doesn't get a box */
+  color: #555;
+}
+
+.lock-panel__row {
+  display: flex;
+  gap: 6px; /* space between the input and the submit button */
+  min-width: 0; /* let the row shrink to the column instead of forcing it wider */
+}
+
+.lock-panel__input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #aaa; /* clearly visible so the box reads the same height as the button */
+  border-radius: 4px;
+  font: inherit;
+}
+
+.lock-panel__input:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.lock-panel__input[aria-invalid="true"] {
+  border-color: #b00020;
+}
+
+.lock-panel__error {
+  margin: 0;
+  color: #b00020; /* same red as the load-error banner */
+}
+
+/* .lock-panel__row in the selector out-specifies Mapbox's own `.mapboxgl-ctrl button`
+   rules — which otherwise win: bottom-only corners via `button:last-child`, and a light
+   `#eee` `button:hover` — so the button keeps all four rounded corners and a visible hover. */
+.lock-panel .lock-panel__row .lock-panel__submit {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  appearance: none; /* strip native button chrome that can paint outside the 32px box */
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background-color: #3f3f46; /* darker so it clearly reads as a button, not muted grey */
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 32px; /* center the arrow vertically without flexbox (cross-browser safe) */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Lift on hover, press on click (borrowed from the printlab buttons): the paired
+   translateY + box-shadow is what reads as 3D — the shadow appearing sells the rise,
+   and :active drops both so the button sinks back into the surface on click. */
+.lock-panel .lock-panel__row .lock-panel__submit:hover:not(:disabled) {
+  background-color: #57575f; /* visibly lightens on hover */
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.4); /* small — tuned to the 40×32 button, not printlab's full-width CTA */
+  transform: translateY(-1px);
+}
+
+.lock-panel .lock-panel__row .lock-panel__submit:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.lock-panel .lock-panel__row .lock-panel__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
