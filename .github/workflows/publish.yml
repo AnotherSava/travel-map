@@ -1,0 +1,108 @@
+# Builds the static bundle and publishes it to Cloudflare Pages on every push to main.
+#
+# This replaces publishing from a developer's machine. That mattered: a local publish ships the
+# working tree while wrangler stamps the deployment with local HEAD, so uncommitted work can go
+# live under a commit hash that doesn't describe it — and picking the wrong secrets environment
+# bakes a non-production token into the bundle, which fails only in production. CI removes both:
+# it builds a clean checkout of one commit, and the Doppler service token is scoped to the `prd`
+# config, so there is no other environment it can reach.
+name: Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One publish at a time; a newer push supersedes an in-flight one.
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://anothersava.com/travel/
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - uses: dopplerhq/cli-action@v3
+
+      # MAPBOX_TOKEN (baked into config.js) and the Cloudflare credentials all come from
+      # travel-map/prd. `doppler run` needs no -p/-c: the service token resolves to exactly one
+      # project and config, which is the property that makes a wrong-environment build impossible.
+      - name: Build
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+        run: doppler run -- node scripts/build_site.mjs
+
+      - name: Publish to Cloudflare Pages
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+        run: |
+          doppler run -- npx --yes wrangler@4 pages deploy dist \
+            --project-name travel-map \
+            --branch main \
+            --commit-hash "$GITHUB_SHA" \
+            --commit-dirty=false
+
+      # A green upload proves nothing about what the site actually serves — the outage this
+      # pipeline exists to prevent looked exactly like a successful deploy.
+      - name: Verify the live site
+        run: |
+          set -euo pipefail
+          URL=https://anothersava.com/travel/
+
+          # Every content hash this build stamped into index.html (see scripts/build_site.mjs).
+          # Waiting for ALL of them is what ties the bytes being served to the bundle just
+          # uploaded. Without it the loop exits on the *previous* deployment's 200 and verifies
+          # nothing — the site is already returning 200 before this job even starts.
+          want=$(grep -o '?v=[0-9a-f]\{8\}' dist/travel/index.html | sort -u || true)
+          [ -n "$want" ] || { echo "::error::no ?v= hashes in the built index.html"; exit 1; }
+          config_v=$(sed -n 's/.*config\.js?v=\([0-9a-f]\{8\}\).*/\1/p' dist/travel/index.html)
+
+          live=1
+          for attempt in 1 2 3 4 5 6; do
+            html=$(curl -fsS "$URL" || true)
+            # grep -F rather than a case glob: `case p) ;;` inside $( ) is a bash parse error,
+            # and unquoted word-splitting of $want is not portable across shells.
+            missing=$(printf '%s\n' "$want" | while IFS= read -r h; do
+              [ -n "$h" ] || continue
+              printf '%s' "$html" | grep -qF -- "$h" || echo "$h"
+            done)
+            if [ -n "$html" ] && [ -z "$missing" ]; then live=0; break; fi
+            if [ "$attempt" != 6 ]; then
+              echo "attempt $attempt: live page is not this build yet (${missing:-page unreachable}) — waiting"
+              sleep 10
+            fi
+          done
+          [ "$live" = 0 ] || { echo "::error::Live site never served this build"; exit 1; }
+
+          # Versioned URL: unique per build, so this cannot be answered from a cached copy of the
+          # previous bundle the way an unversioned config.js can.
+          config=$(curl -fsS "${URL}config.js?v=${config_v}")
+          if ! printf '%s' "$config" | grep -q 'window.MAPBOX_TOKEN = "pk\.'; then
+            echo "::error::Deployed config.js carries no Mapbox token"
+            exit 1
+          fi
+          token=$(printf '%s' "$config" | sed -n 's/.*"\(pk\.[^"]*\)".*/\1/p')
+
+          # Best-effort origin check. Mapbox enforces URL restrictions against the browser Referer
+          # and a server-side request does not reproduce that perfectly, so a pass is not proof —
+          # but a 403 is a real signal that the wrong token shipped, which is exactly how the map
+          # went blank before.
+          tile=$(curl -sS -o /dev/null -w '%{http_code}' -H 'Referer: https://anothersava.com/travel/' \
+            "https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/1/0/0.vector.pbf?access_token=${token}" || true)
+          if [ "$tile" != "200" ]; then
+            echo "::error::Deployed Mapbox token could not fetch a tile for the production origin (HTTP $tile)"
+            exit 1
+          fi
+          echo "Live site OK — $URL"

@@ -68,22 +68,31 @@ writes:
 
 ## Run locally
 
-Serve from `web/`:
-
 ```bash
-cd web
-python -m http.server 8000
+./scripts/dev.sh
 ```
 
-Then open <http://localhost:8000/>.
+Then open <http://localhost:8000/>. The script regenerates the gitignored `web/config.js`
+from Doppler (`travel-map/dev`) before serving, so a fresh clone never comes up with a
+tokenless, blank map, and it refuses to start if something already holds the port.
+
+Check changes here rather than by deploying — production is a direct upload with no staging
+environment, so every deploy is a live change to the public site.
+
+The port is **8000 exactly**, not a default: the dev Mapbox token is URL-restricted to
+`http://localhost:8000`, and Mapbox restrictions take no wildcards or port ranges. On any
+other port the map renders blank. By hand the equivalent is
+`python -m http.server 8000 --directory web`, which skips the token refresh.
 
 > Fetching the GeoJSON needs `http://`, not `file://`, so opening `index.html` directly
 > won't work.
 
 ### Base maps
 
-The base map uses [Mapbox](https://account.mapbox.com/), so it needs a free access
-token. Get one (Tokens), then:
+The base map uses [Mapbox](https://account.mapbox.com/), so it needs a free access token.
+`./scripts/dev.sh` writes `web/config.js` from Doppler (`travel-map/dev`) on every run, so
+normally there is nothing to do here. Without Doppler, get a token (Tokens) and paste it in
+by hand:
 
 ```bash
 cp web/config.example.js web/config.js   # then paste your token into config.js
@@ -103,6 +112,7 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 │   ├── requirements.txt
 │   ├── build_geojson.py     # writes into web/data/
 │   ├── build_site.mjs       # stages web/ → dist/travel/ for deploy
+│   ├── dev.sh               # local server on :8000 (refreshes web/config.js first)
 │   ├── crypto/              # shared PBKDF2 + AES-GCM envelope (Node ESM)
 │   ├── visits-encrypt.mjs   # visits.source.json → visits.enc
 │   └── visits-decrypt.mjs   # visits.enc → visits.source.json (fresh clone)
@@ -122,32 +132,46 @@ country/region borders sharpened. Without a token the app shows a prompt instead
 
 ## Hosting
 
-The site is published to **Cloudflare Pages** under a `/travel` subpath. Secrets are managed
-with [Doppler](https://www.doppler.com/) (project `travel-map`, config `dev`) and injected at
-build/deploy time via `doppler run`, so nothing sensitive is written to disk:
+The site is published to **Cloudflare Pages** under a `/travel` subpath, by CI. Pushing to
+`main` runs [`.github/workflows/publish.yml`](.github/workflows/publish.yml), which builds the
+bundle, uploads it, and then verifies the live site is actually serving that build.
 
-- `MAPBOX_TOKEN` — production Mapbox token, URL-restricted to the live domain.
-- `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` — referenced from a shared `tools` Doppler
-  project, so one Cloudflare token covers every site.
-- `TRAVEL_VISITS_PASSWORD` — unlocks the encrypted visit log (also used by the visits scripts).
+**Publishing from a developer machine is deliberately not the path.** A local upload ships the
+working tree while Wrangler stamps the deployment with local `HEAD`, so uncommitted work can go
+live under a commit hash that doesn't describe it — and picking the wrong secrets environment
+bakes a non-production token into the bundle, which fails only in production. CI builds a clean
+checkout of one commit with one pinned set of credentials, and neither is possible.
 
-A staging step prepares a deployable `dist/`:
+Secrets live in [Doppler](https://www.doppler.com/) (project `travel-map`), injected via
+`doppler run` so nothing sensitive is written to disk:
+
+| Config | Holds | Used by |
+| --- | --- | --- |
+| `dev` | `MAPBOX_TOKEN` (restricted to `http://localhost:8000`), `TRAVEL_VISITS_PASSWORD` | local work |
+| `prd` | `MAPBOX_TOKEN` (restricted to the live domain), Cloudflare credentials, `TRAVEL_VISITS_PASSWORD` | source of truth |
+| `ci` | references to `prd`'s `MAPBOX_TOKEN` and Cloudflare credentials — and nothing else | the publish workflow |
+
+The two Mapbox tokens differ only in URL restriction. Building with the `dev` token ships a
+localhost-only token, and the live map then renders as a blank white globe *while the token
+still validates* — an easy failure to misdiagnose, and the reason publishing is automated.
+
+The `ci` config exists so the workflow cannot read `TRAVEL_VISITS_PASSWORD`: the build never
+needs it (`visits.enc` ships already encrypted), and the ciphertext is public in this repo, so
+the password is the only thing protecting the trip log. GitHub Actions holds a Doppler **service
+token scoped to `ci`** — read-only, one config, revocable — as the repo secret `DOPPLER_TOKEN`.
+Because a service token resolves to exactly one config, `doppler run` needs no `-p`/`-c` flags,
+so there is no argument to get wrong.
+
+To stage a build locally (for inspection — not for publishing):
 
 ```bash
-doppler run -p travel-map -c dev -- node scripts/build_site.mjs
+doppler run -p travel-map -c ci -- node scripts/build_site.mjs
 ```
 
 This copies `web/` → `dist/travel/` (so the map serves under `/travel/`), generates
 `dist/travel/config.js` from `MAPBOX_TOKEN`, content-hashes the local assets for cache-busting,
 and writes `dist/_redirects` pointing the site root at `/travel/`. It refuses to build if
 `web/data/visits.enc` is older than a locally-edited `visits.source.json`.
-
-Deploy the staged folder with Wrangler (direct upload); `doppler run` supplies the Cloudflare
-credentials:
-
-```bash
-doppler run -p travel-map -c dev -- npx wrangler pages deploy dist --project-name <project> --branch main
-```
 
 `web/` stays a self-contained static bundle, so it can also be dropped onto any other static
 host as-is. (`.env.example` lists the same variables for anyone preferring a local `.env` with
