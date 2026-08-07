@@ -28,13 +28,13 @@ jobs:
       name: production
       url: https://anothersava.com/travel/
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
 
-      - uses: dopplerhq/cli-action@v3
+      - uses: dopplerhq/cli-action@v4
 
       # MAPBOX_TOKEN (baked into config.js) and the Cloudflare credentials all come from
       # travel-map/prd. `doppler run` needs no -p/-c: the service token resolves to exactly one
