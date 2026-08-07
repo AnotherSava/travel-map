@@ -23,3 +23,6 @@ dist/
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Local dev-server logs (scripts/dev.sh via the deploy skill)
+/dev-server*.log
