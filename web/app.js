@@ -26,7 +26,17 @@ const DATA_URL = new URL("data/places.geojson", window.location.href).href;
 // configured. Includes a public glyphs source so cluster-count labels work even
 // without a base map; a real Mapbox style supplies its own glyphs.
 const BLANK_STYLE = { version: 8, glyphs: "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf", sources: {}, layers: [] };
-const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: [0, 20], zoom: 1.4, attributionControl: false });
+
+// Opening view: the home city with its wider region around it. Unlocking the visit log
+// swaps it for the most recent visit (see flyToLatestVisit) at the same zoom, so both
+// landings frame a city alike.
+const HOME_CENTER = [-123.114, 49.261]; // Vancouver
+// Every camera the app sets uses this zoom, and the cluster cutoff is derived from it
+// (see installOverlay) — a clustered city would draw as an anonymous count bubble with
+// its base-map label suppressed too (see SETTLEMENT_LABEL_RE), i.e. framed but unnamed.
+const DEFAULT_ZOOM = 8;
+
+const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE, center: HOME_CENTER, zoom: DEFAULT_ZOOM, attributionControl: false });
 map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
 // Attribution is required (Mapbox + OSM); compact collapses it to an ⓘ button.
 map.addControl(new mapboxgl.AttributionControl({ compact: true }));
@@ -300,8 +310,10 @@ function installOverlay(geojson) {
   // Idempotent per item: `styledata` fires repeatedly (sprite/tiles/style swap),
   // sometimes mid-transition, so guard every add individually.
   if (!map.hasImage("visited-star")) map.addImage("visited-star", makeStarImage(64), { sdf: true });
+  // clusterMaxZoom is the last zoom that still clusters, so it sits one below
+  // DEFAULT_ZOOM: every view the app lands on shows real, named stars.
   if (!map.getSource("places")) {
-    map.addSource("places", { type: "geojson", data: geojson, cluster: true, clusterRadius: 50, clusterMaxZoom: 8 });
+    map.addSource("places", { type: "geojson", data: geojson, cluster: true, clusterRadius: 50, clusterMaxZoom: DEFAULT_ZOOM - 1 });
   }
   hideVisitedBaseLabels(geojson);
 
@@ -378,6 +390,41 @@ function popupHtml(props) {
   return html;
 }
 
+// Coordinates of the visited city keyed "<city>|<cc>", or null if the places data
+// hasn't loaded yet or holds no such city.
+function placeCenter(key) {
+  if (!placesData) return null;
+  const feature = placesData.features.find((f) => {
+    const p = f.properties || {};
+    return p.city + KEY_SEP + p.cc === key;
+  });
+  return feature ? feature.geometry.coordinates : null;
+}
+
+// The "<city>|<cc>" key of the most recently visited city in the decrypted log.
+// ISO dates order lexicographically at any precision ("2026-07" < "2026-08-03"), so
+// a string comparison ranks them without parsing.
+function latestVisitKey(visits) {
+  let latestKey = null, latestDate = "";
+  for (const [key, list] of Object.entries(visits)) {
+    const newest = parseVisits(list)[0]; // parseVisits sorts newest-first
+    const date = newest && newest.date ? String(newest.date) : "";
+    if (date > latestDate) { latestDate = date; latestKey = key; }
+  }
+  return latestKey;
+}
+
+// Unlocking moves the map to the latest visit: the home view answers a visitor's
+// "where is this map about", the owner's question is "where was I last". Two cases
+// deliberately don't move it — an open popup (the user unlocked to read *that* city's
+// log, and the move would carry it off-screen along with the details they asked for)
+// and re-locking (yanking the view back home reads as the map losing their place).
+function flyToLatestVisit() {
+  if (openPopup) return;
+  const center = placeCenter(latestVisitKey(decryptedVisits));
+  if (center) map.easeTo({ center, zoom: DEFAULT_ZOOM });
+}
+
 // ---- Lock control ------------------------------------------------------------
 // The visit log ships encrypted (web/data/visits.enc); entering the password
 // decrypts it in-memory (window.decryptVisits, web/crypto.js) and popups start
@@ -424,6 +471,7 @@ async function submitPassword(e, ui) {
     decryptedVisits = await window.decryptVisits(ui.input.value.trim()); // throws on wrong password
     setUnlocked(ui, true);
     closePanel(ui); // also clears the password field
+    flyToLatestVisit();
     if (openPopup && openPopupProps) openPopup.setHTML(popupHtml(openPopupProps));
   } catch (err) {
     // A load/parse failure (e.g. a missing visits.enc) is not a wrong password —
@@ -479,12 +527,6 @@ class LockControl {
 
 map.addControl(new LockControl(), "top-right");
 
-function fitToData(geojson) {
-  const bounds = new mapboxgl.LngLatBounds();
-  geojson.features.forEach((f) => bounds.extend(f.geometry.coordinates));
-  if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: 60, maxZoom: 6, duration: 0 });
-}
-
 async function init() {
   let geojson;
   try {
@@ -499,11 +541,9 @@ async function init() {
   // The base style loads asynchronously and `styledata` fires repeatedly during
   // load; (re)install the overlay and apply the Streets tweaks each time. The
   // per-item guards in installOverlay make this idempotent.
-  let fitted = false;
   const reinstall = () => {
     if (!window.MAP_STYLE) tweakStreets(); // skip customizations on a MAP_STYLE override
     installOverlay(geojson);
-    if (!fitted) { fitToData(geojson); fitted = true; }
   };
   map.on("styledata", reinstall);
   if (map.isStyleLoaded()) reinstall();

@@ -3,8 +3,10 @@
 An interactive world map (zoom/pan) that plots a set of cities, each rendered as a
 **star** (green by default, or a per-city/per-country color set in the input) and
 clustered when zoomed out. Click a star for the city name; click a cluster to zoom in.
-When unlocked with a password (the top-right lock control), each star also shows that
-city's trip log — dates, activities, and comments — kept encrypted otherwise.
+It opens on the home city rather than the whole globe. When unlocked with a password
+(the top-right lock control), each star also shows that city's trip log — dates,
+activities, and comments — kept encrypted otherwise, and the map moves to the most
+recent visit (unless a popup is open, which it leaves alone).
 
 The project is generic: it reads cities from an input file and displays them. The
 current use case is "places I've visited," but it works identically for any city list
