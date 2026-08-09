@@ -4,8 +4,9 @@
 # working tree while wrangler stamps the deployment with local HEAD, so uncommitted work can go
 # live under a commit hash that doesn't describe it — and picking the wrong secrets environment
 # bakes a non-production token into the bundle, which fails only in production. CI removes both:
-# it builds a clean checkout of one commit, and the Doppler service token is scoped to the `prd`
-# config, so there is no other environment it can reach.
+# it builds a clean checkout of one commit, and the Doppler service token is scoped to the `ci`
+# config — which holds nothing but references to `prd`'s Mapbox and Cloudflare values, and
+# deliberately not the visits password — so there is no other environment it can reach.
 name: Publish
 
 on:

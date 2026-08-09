@@ -149,9 +149,17 @@ var → Doppler → hidden prompt.
 doppler run -p travel-map -c dev -- node scripts/visits-decrypt.mjs   # restore source on a fresh clone
 # edit web/data/visits.source.json
 doppler run -p travel-map -c dev -- node scripts/visits-encrypt.mjs   # re-encrypt -> visits.enc
-git add web/data/visits.enc
-bash scripts/deploy.sh                                          # build_site.mjs blocks a stale visits.enc
+./scripts/dev.sh                                                      # unlock on :8000 and check
+# iterate: edit -> re-encrypt -> reload
+git add web/data/visits.enc && git commit -m "chore(visits): refresh the trip log"
+git push                                                              # publishes: CI runs on main
 ```
+
+The local server reads the same `visits.enc` the site ships, so unlocking at
+<http://localhost:8000/> shows exactly what viewers will get — iterate there, and push once it
+reads right. Re-encrypt before pushing: the build's stale-ciphertext guard only fires on a
+machine that *has* the plaintext source, and the source is gitignored, so a CI checkout cannot
+catch a `visits.enc` you forgot to regenerate.
 
 ### Security model — read this
 
