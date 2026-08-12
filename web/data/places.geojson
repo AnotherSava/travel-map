@@ -447,6 +447,23 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -122.9543022,
+          50.1171903
+        ]
+      },
+      "properties": {
+        "city": "Whistler",
+        "country": "Canada",
+        "region": "British Columbia",
+        "cc": "CA",
+        "rank": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -79.0639039,
           43.1065603
         ]
@@ -2039,6 +2056,23 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          35.58688032831299,
+          31.71394973069496
+        ]
+      },
+      "properties": {
+        "city": "Swemeh (Suwaymah)",
+        "country": "Jordan",
+        "region": null,
+        "cc": "JO",
+        "rank": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           18.5367516,
           42.4517622
         ]
@@ -3316,23 +3350,6 @@
         "region": null,
         "cc": "UA",
         "rank": 12
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.6453246,
-          48.2050985
-        ]
-      },
-      "properties": {
-        "city": "Berehove (Берегове)",
-        "country": "Ukraine",
-        "region": null,
-        "cc": "UA",
-        "rank": 16
       }
     },
     {

@@ -58,6 +58,7 @@
       { "name": "Oliver", "region": "British Columbia" },
       { "name": "Revelstoke", "region": "British Columbia" },
       { "name": "Vancouver", "region": "British Columbia" },
+      { "name": "Whistler", "region": "British Columbia" },
       { "name": "Niagara Falls", "region": "Ontario" },
       { "name": "Ottawa", "region": "Ontario" },
       { "name": "Toronto", "region": "Ontario" },
@@ -226,7 +227,8 @@
     "cities": [
       { "name": "Amman" },
       { "name": "Jerash" },
-      { "name": "Petra" }
+      { "name": "Petra" },
+      { "name": "Swemeh (Suwaymah)" }
     ]
   },
   {
@@ -363,7 +365,6 @@
     "country": "Ukraine",
     "cities": [
       { "name": "Alushta" },
-      { "name": "Berehove (Берегове)" },
       { "name": "Chernihiv" },
       { "name": "Feodosia" },
       { "name": "Foros" },
