@@ -40,6 +40,10 @@ const map = new mapboxgl.Map({ container: "map", style: STYLE_URL || BLANK_STYLE
 map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
 // Attribution is required (Mapbox + OSM); compact collapses it to an ⓘ button.
 map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+// Ruler in the bottom-right corner, so a view reads at a glance as city-sized or
+// country-sized. Shares the corner with the attribution ⓘ, which style.css lays out
+// beside it (the ruler to its left) rather than stacked.
+map.addControl(new mapboxgl.ScaleControl({ maxWidth: 200, unit: "metric" }), "bottom-right");
 
 // Default star color; overridden per-feature by a `color` property set in the
 // input JSON (see scripts/build_geojson.py).
@@ -100,6 +104,22 @@ function formatVisitDate(iso) {
   return y;
 }
 
+// Format a visit's dates: a lone date, or a start–end range written with whatever
+// trailing parts both ends share stated once — "16 Sep – 7 Oct 2018" for a stay inside
+// one year, "16–20 Sep 2018" for one inside a single month. A shared part is only folded
+// away when both ends carry it, so a mixed-precision pair ("2018-09" to "2018-10-07")
+// still prints each end in full rather than implying a precision one end lacks.
+function formatVisitDates(start, end) {
+  if (!start && !end) return ""; // a visit may carry no date at all
+  if (!end || !start || start === end) return formatVisitDate(start || end);
+  const [sy, sm, sd] = String(start).split("-");
+  const [ey, em, ed] = String(end).split("-");
+  const endText = formatVisitDate(end);
+  if (!sd || !ed || sy !== ey) return `${formatVisitDate(start)} – ${endText}`;
+  if (sm === em) return `${Number(sd)}–${endText}`;
+  return `${Number(sd)} ${MONTH_ABBR[Number(sm) - 1]} – ${endText}`;
+}
+
 // Normalize a visits value to a newest-first array. Visits now come from the
 // decrypted in-memory store as real arrays (see popupHtml); the string branch is a
 // cheap defensive path for a value that ever arrives JSON-encoded.
@@ -116,7 +136,8 @@ function visitsHtml(raw) {
   const visits = parseVisits(raw);
   if (!visits.length) return "";
   const items = visits.map((v) => {
-    const date = v.date ? `<span class="popup__visit-date">${escapeHtml(formatVisitDate(v.date))}</span>` : "";
+    const dateText = formatVisitDates(v.date, v.end);
+    const date = dateText ? `<span class="popup__visit-date">${escapeHtml(dateText)}</span>` : "";
     const activities = Array.isArray(v.activities)
       ? v.activities.map((a) => `<span class="popup__visit-activity">${escapeHtml(a)}</span>`).join("")
       : "";

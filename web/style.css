@@ -54,6 +54,21 @@ html, body {
   color: #333;
 }
 
+/* The scale bar and the attribution ⓘ both live in the bottom-right corner, which Mapbox
+   stacks vertically. Lay them out in one row instead — the scale is added first, so `row`
+   puts it left of the ⓘ — and bottom-align them so they read as a single strip. */
+.mapboxgl-ctrl-bottom-right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+/* Expanding the attribution grows it leftwards; without this the ruler would be squeezed
+   and stop matching the distance it claims. */
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-scale {
+  flex: none;
+}
+
 /* Lock control: unlock visit details with a password (see app.js LockControl). */
 .lock-ctrl {
   position: relative;

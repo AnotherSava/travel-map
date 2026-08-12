@@ -118,13 +118,15 @@ convention. Each value is an array of **visit objects**, rendered newest-first i
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `date` | string | no | ISO date at any precision: `"2019"`, `"2019-05"`, or `"2019-05-14"`. Sorts visits (newest first) and renders at its precision (`14 May 2019` / `May 2019` / `2019`). |
+| `end` | string | no | Closing date of a stay that spans days, same ISO precisions as `date`, which then reads as the opening one. The pair renders as a range with whatever trailing parts both ends share written once — `16 Sep – 7 Oct 2018` within a year, `16–20 Sep 2018` within a month, both ends in full otherwise. Sorting still keys on `date` alone. |
 | `activities` | array of strings | no | Free-text trip/activity types (`["beach"]`, `["hiking", "food"]`, …), each shown as a pill. Not a fixed vocabulary — any string is accepted and shown as-is. |
 | `comment` | string | no | Free text shown under the visit. |
 
 ```json
 {
   "Kyoto|JP":   [ { "date": "2025-04", "activities": ["temples", "food"] } ],
-  "Seattle|US": [ { "date": "2024", "activities": ["conference"], "comment": "rainy but worth it" } ]
+  "Seattle|US": [ { "date": "2024", "activities": ["conference"], "comment": "rainy but worth it" } ],
+  "Nara|JP":    [ { "date": "2025-04-02", "end": "2025-04-09", "activities": ["hiking"] } ]
 }
 ```
 
